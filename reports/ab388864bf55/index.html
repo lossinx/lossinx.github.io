@@ -25,18 +25,21 @@
     var CONFIG = {"hostname":"www.lossinx.site","root":"/","scheme":"Mist","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="子虚乌有">
-<meta property="og:type" content="website">
-<meta property="og:title" content="lossinx的个人博客">
-<meta property="og:url" content="http://www.lossinx.site/archives/2020/page/2/index.html">
+  <meta name="description" content="点击查看详情。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《数据结构和算法分析 C语言描述》笔记#5 散列">
+<meta property="og:url" content="http://www.lossinx.site/reports/ab388864bf55/index.html">
 <meta property="og:site_name" content="lossinx的个人博客">
-<meta property="og:description" content="子虚乌有">
+<meta property="og:description" content="点击查看详情。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-29T15:51:28.000Z">
+<meta property="article:modified_time" content="2020-10-30T09:16:28.553Z">
 <meta property="article:author" content="lossinx">
+<meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://www.lossinx.site/archives/2020/page/2/">
+<link rel="canonical" href="http://www.lossinx.site/reports/ab388864bf55/">
 
 
 <script class="page-configurations">
@@ -44,12 +47,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>归档 | lossinx的个人博客</title>
+  <title>《数据结构和算法分析 C语言描述》笔记#5 散列 | lossinx的个人博客</title>
   
 
 
@@ -202,7 +205,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -215,6 +218,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%A3%E5%88%97-Hash"><span class="nav-number">1.</span> <span class="nav-text">散列(Hash)</span></a></li></ol></div>
         </section>
         <!--/noindex-->
 
@@ -286,116 +290,152 @@
 </noscript>
 
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
       
 
       
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 11 篇日志。 继续努力。</span>
-      </div>
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.lossinx.site/reports/ab388864bf55/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="lossinx">
+      <meta itemprop="description" content="子虚乌有">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lossinx的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          《数据结构和算法分析 C语言描述》笔记#5 散列
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-10-29 23:51:28" itemprop="dateCreated datePublished" datetime="2020-10-29T23:51:28+08:00">2020-10-29</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-10-30 17:16:28" itemprop="dateModified" datetime="2020-10-30T17:16:28+08:00">2020-10-30</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/reports/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">点击查看详情。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+<h4 id="散列-Hash"><a href="#散列-Hash" class="headerlink" title="散列(Hash)"></a>散列(Hash)</h4></blockquote>
+<ul>
+<li><blockquote>
+<p>什么是散列？</p>
+</blockquote>
+<p>将一段输入通过某种方式计算得到一个尽可能独一无二的输出的过程就叫做<code>散列</code>。一般来说，这个过程对于不同的输入，得到的输出应该是具有相同长度，而输出的长度往往小于输入，并且输出应该尽可能不同。我们将这个<code>输入</code>叫做关键字，输出叫做<code>散列值</code>。这个计算过程使用的函数叫做<code>散列函数</code>，它将不同的关键字映射为不同的散列值。</p>
+</li>
+<li><blockquote>
+<p>散列函数</p>
+</blockquote>
+<p>为了更方便的理解散列，我们这里引入散列表的概念。这个表是一个有限的数组，我们可以通过散列函数得到每个关键字的散列值作为它们的下标，这样就可以把关键字存储在数组中。为了尽可能的提升效率和利用率，我们必须保证这个数组被填满并且没有错误。一般来讲，一个理想的散列函数会均匀的分配关键字从而保证关键字被映射到不同的单元。倘若两个关键字得到同一个散列值，这就发生了<code>Hash碰撞/冲突(collision)</code>。</p>
+</li>
+<li><blockquote>
+<p>碰撞的解决</p>
+</blockquote>
+<ul>
+<li><p>分离链接法(separate chaining)</p>
+<p>当关键字们得到同一个散列值时，我们将这些关键字串起来，单独放在一个（链）表中。这样散列表中原本放置一个关键字的地方，放置了一个装有许多关键字的链表。为了方便起见，我们可以在空间足够的情况下为链表加入一个表头，这纯属个人喜好。你甚至可以不使用链表，而使用别的数据结构。</p>
+</li>
+<li><p>开放定址法(open addressing hashing)</p>
+<p>开放定址法和分离链接法思想不同，开放定址法在遇到冲突情况时，会为关键字寻找另外可用的单元，而不是将同一散列值的关键字聚集在一起。</p>
+<ul>
+<li><p>线性探测法</p>
+<p>在这个方法中，函数$F$是一个线性的函数，也就是说为了找到一个可用的空单元，会逐个探测访问每个单元。在若干次插入后，有关键字的单元会连续的靠在一起，这被称为一次聚集(primary clustering)。我们可以简单的料到，只要表中空单元越多，在进行插入时访问的单元数量就会越少，消耗就越少。反而言之，只要表中大多数单元已经被填满，就不要使用这个方法，它会探测过多单元从而花费过多资源。</p>
+</li>
+<li><p>平方探测法</p>
+<p>平方探测法消除了线性探测法中的一次聚集问题。在平方探测法中，冲突函数是二次函数，如$F(i)=i^2$。在平方探测法中，存在一个定理：</p>
+<blockquote>
+<p>“当表至少有一半是空的，并且表的大小为素数时，总能够插入一个新的元素。”</p>
+</blockquote>
+<p>但是，当表填满过半或表的大小不是素数时，可能平方探测法的表现不尽人意。为了更好的使用这个方法，我们可以将散列表的大小设置为总元素个数的两倍大小。虽然消除了一次聚集，但平方探测法也带来了二次聚集(secondary clustering)问题。</p>
+</li>
+<li><p>双散列(double hashing)</p>
+<p>顾名思义，使用了两个散列函数。我们将第二个散列函数称为$hash_2(X)$。而冲突函数一个例子为$F(i)=i·hash_2(X)$。我们应该尽可能使得$hash_2(X)$的结果不为$0$值，如$hash_2(X)=R-(X\mod R)$，其中$R$为小于散列表大小的素数。</p>
+</li>
+</ul>
+</li>
+<li><p>再散列</p>
+<p>再散列会建立一个大小为原散列表的两倍的新散列表，并把原表中每个元素通过新的散列函数插入新表中。</p>
+</li>
+<li><p>可扩散列(extendible hashing)</p>
+<p>可扩散列的目的是处理数据量过大以至装不进主存的情况。可扩散列通过使用位的根与树叶来将数据分开，我们用$D$代表根使用的位数，或称目录(directory)。也就是说，根中有$2^D$种情况。</p>
+</li>
+</ul>
+</li>
+</ul>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2020-10-29T23:51:28+08:00"
-              content="2020-10-29">
-          10-29
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/reports/8a884bafbfc4/" itemprop="url">
-            <span itemprop="name">《数据结构和算法分析 C语言描述》笔记#6  堆</span>
-          </a>
-      </div>
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/note/" rel="tag"># 笔记</a>
+          </div>
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/reports/8a884bafbfc4/" rel="prev" title="《数据结构和算法分析 C语言描述》笔记#6  堆">
+                  <i class="fa fa-chevron-left"></i> 《数据结构和算法分析 C语言描述》笔记#6  堆
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/reports/81b0f4f897cf/" rel="next" title="《数据结构和算法分析 C语言描述》笔记#4 树">
+                  《数据结构和算法分析 C语言描述》笔记#4 树 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2020-10-29T23:51:28+08:00"
-              content="2020-10-29">
-          10-29
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/reports/eb9331feb36c/" itemprop="url">
-            <span itemprop="name">《数据结构和算法分析 C语言描述》笔记#7 排序算法</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2020-10-29T23:51:28+08:00"
-              content="2020-10-29">
-          10-29
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/reports/e34a4d024b13/" itemprop="url">
-            <span itemprop="name">《数据结构和算法分析 C语言描述》笔记#8 不相交集ADT</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2020-10-29T23:51:28+08:00"
-              content="2020-10-29">
-          10-29
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/reports/0dd5623f153c/" itemprop="url">
-            <span itemprop="name">《数据结构和算法分析 C语言描述》笔记#9 图论算法</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
-  </div>
-  
-  
-  
 
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/2020/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/2020/">1</a><span class="page-number current">2</span>
-  </nav>
 
 
 

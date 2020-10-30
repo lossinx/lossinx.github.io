@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>《数据结构和算法分析 C语言描述》笔记#0 写在前面</title>
-    <url>/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/f165f6af4c15/</url>
+    <url>/reports/f165f6af4c15/</url>
     <content><![CDATA[<ul>
 <li>这是什么</li>
 </ul>
@@ -32,8 +32,21 @@
       </tags>
   </entry>
   <entry>
+    <title>《数据结构和算法分析 C语言描述》笔记#10 算法设计技巧</title>
+    <url>/reports/342f59392f1a/</url>
+    <content><![CDATA[<blockquote>
+<h4 id="贪婪算法"><a href="#贪婪算法" class="headerlink" title="贪婪算法"></a>贪婪算法</h4></blockquote>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>《数据结构和算法分析 C语言描述》笔记#1 引论</title>
-    <url>/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/576f952bdc28/</url>
+    <url>/reports/576f952bdc28/</url>
     <content><![CDATA[<ol>
 <li><h4 id="一个好的算法应该做什么"><a href="#一个好的算法应该做什么" class="headerlink" title="一个好的算法应该做什么"></a>一个好的算法应该做什么</h4><p>在一个合理的时间内尽可能地处理足够多的数据，并且能解决一类问题而不仅仅是对某个偶然情况有用。</p>
 </li>
@@ -129,7 +142,7 @@ AD\equiv BD(\mod N)</script><p>即N整除A-B，也就是说无论A还是B除以N
   </entry>
   <entry>
     <title>《数据结构和算法分析 C语言描述》笔记#2 算法分析</title>
-    <url>/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/40155a7efa0e/</url>
+    <url>/reports/40155a7efa0e/</url>
     <content><![CDATA[<blockquote>
 <h3 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h3></blockquote>
 <p>为了方便我们分析和设计算法，我们推出一个理想化的计算机模型。</p>
@@ -323,21 +336,8 @@ AD\equiv BD(\mod N)</script><p>即N整除A-B，也就是说无论A还是B除以N
       </tags>
   </entry>
   <entry>
-    <title>《数据结构和算法分析 C语言描述》笔记#10 算法设计技巧</title>
-    <url>/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/342f59392f1a/</url>
-    <content><![CDATA[<blockquote>
-<h4 id="贪婪算法"><a href="#贪婪算法" class="headerlink" title="贪婪算法"></a>贪婪算法</h4></blockquote>
-]]></content>
-      <categories>
-        <category>读书笔记</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>《数据结构和算法分析 C语言描述》笔记#3 表、栈和队列</title>
-    <url>/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/bb8f1d957d5f/</url>
+    <url>/reports/bb8f1d957d5f/</url>
     <content><![CDATA[<ul>
 <li><h3 id="什么是抽象数据类型-Abstract-Data-Type-ADT"><a href="#什么是抽象数据类型-Abstract-Data-Type-ADT" class="headerlink" title="什么是抽象数据类型(Abstract Data Type, ADT)"></a>什么是抽象数据类型(Abstract Data Type, ADT)</h3><p>出于模块化设计思想，人们将一些操作的集合的数学模型称为ADT。ADT的诞生使得编程更加清晰，程序员只需要通过ADT操作便能方便的操作数据，而这些操作对于程序的其余部分是完全透明的，也就是说其余部分并不需要关注这部分的具体实现。常见的ADT有<strong>表(List)</strong>、<strong>集合(Set)</strong>、<strong>图(Graph)</strong>等。如果读者了解过抽象类(Abstract Class)或接口(Interface)的概念，会很容易接受ADT是抽象事物的事实。</p>
 </li>
@@ -469,7 +469,7 @@ AD\equiv BD(\mod N)</script><p>即N整除A-B，也就是说无论A还是B除以N
   </entry>
   <entry>
     <title>《数据结构和算法分析 C语言描述》笔记#4 树</title>
-    <url>/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/81b0f4f897cf/</url>
+    <url>/reports/81b0f4f897cf/</url>
     <content><![CDATA[<ul>
 <li><h2 id="树-Tree"><a href="#树-Tree" class="headerlink" title="树(Tree)"></a>树(Tree)</h2><p>相比前面提到的链表，本章介绍的树更加适合在拥有大量输入时的线性访问，事实上，它的大部分操作的运行时间都是$O(\log N)$。</p>
 <p>我们将树称为树的一个重要原因便是它的结构酷似自然界中的树。定义树的一种自然方法便是递归，一棵非空的树将由一个<code>根节点(root node)</code>。也就是说，一棵非空的树是由若干棵<code>子树(child tree)</code>组成的，而我们将连接这些树或者说节点的联系称为<code>边(edge)</code>。</p>
@@ -650,7 +650,7 @@ AD\equiv BD(\mod N)</script><p>即N整除A-B，也就是说无论A还是B除以N
   </entry>
   <entry>
     <title>《数据结构和算法分析 C语言描述》笔记#5 散列</title>
-    <url>/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/ab388864bf55/</url>
+    <url>/reports/ab388864bf55/</url>
     <content><![CDATA[<blockquote>
 <h4 id="散列-Hash"><a href="#散列-Hash" class="headerlink" title="散列(Hash)"></a>散列(Hash)</h4></blockquote>
 <ul>
@@ -708,7 +708,7 @@ AD\equiv BD(\mod N)</script><p>即N整除A-B，也就是说无论A还是B除以N
   </entry>
   <entry>
     <title>《数据结构和算法分析 C语言描述》笔记#6  堆</title>
-    <url>/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/8a884bafbfc4/</url>
+    <url>/reports/8a884bafbfc4/</url>
     <content><![CDATA[<blockquote>
 <h4 id="堆-Heap"><a href="#堆-Heap" class="headerlink" title="堆(Heap)"></a>堆(Heap)</h4></blockquote>
 <ul>
@@ -774,7 +774,7 @@ AD\equiv BD(\mod N)</script><p>即N整除A-B，也就是说无论A还是B除以N
   </entry>
   <entry>
     <title>《数据结构和算法分析 C语言描述》笔记#7 排序算法</title>
-    <url>/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/eb9331feb36c/</url>
+    <url>/reports/eb9331feb36c/</url>
     <content><![CDATA[<blockquote>
 <h4 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h4></blockquote>
 <p>这一章将围绕着数组元素的排序展开。为了减轻负担，所有的元素都为整数（其实前面几章也都是这样做的）。</p>
@@ -893,7 +893,7 @@ AD\equiv BD(\mod N)</script><p>即N整除A-B，也就是说无论A还是B除以N
   </entry>
   <entry>
     <title>《数据结构和算法分析 C语言描述》笔记#8 不相交集ADT</title>
-    <url>/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/e34a4d024b13/</url>
+    <url>/reports/e34a4d024b13/</url>
     <content><![CDATA[<blockquote>
 <h5 id="等价关系"><a href="#等价关系" class="headerlink" title="等价关系"></a>等价关系</h5></blockquote>
 <p>首先我们需要明确关系的定义:</p>
@@ -975,7 +975,7 @@ AD\equiv BD(\mod N)</script><p>即N整除A-B，也就是说无论A还是B除以N
   </entry>
   <entry>
     <title>《数据结构和算法分析 C语言描述》笔记#9 图论算法</title>
-    <url>/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/0dd5623f153c/</url>
+    <url>/reports/0dd5623f153c/</url>
     <content><![CDATA[<blockquote>
 <h5 id="图的定义"><a href="#图的定义" class="headerlink" title="图的定义"></a>图的定义</h5></blockquote>
 <p>一个<strong>图(Graph)</strong>$G=(V,E)$，由<strong>顶点</strong>$V(Vertex)$的集和<strong>边</strong>$E(Edge)$的集组成。显而易见，每一条边拥有一副点对$(a,b),a,b\in V$。边亦有<strong>弧(arc)</strong>的别称。</p>

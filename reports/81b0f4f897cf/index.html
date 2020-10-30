@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.lossinx.site","root":"/","scheme":"Mist","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta name="description" content="点击查看详情。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《数据结构和算法分析 C语言描述》笔记#4 树">
+<meta property="og:url" content="http://www.lossinx.site/reports/81b0f4f897cf/index.html">
+<meta property="og:site_name" content="lossinx的个人博客">
+<meta property="og:description" content="点击查看详情。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-29T15:51:28.000Z">
+<meta property="article:modified_time" content="2020-10-30T09:16:27.382Z">
+<meta property="article:author" content="lossinx">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://www.lossinx.site/reports/81b0f4f897cf/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>《数据结构和算法分析 C语言描述》笔记#4 树 | lossinx的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">lossinx的个人博客</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">深林人不知，明月来相照</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%91-Tree"><span class="nav-number">1.</span> <span class="nav-text">树(Tree)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%91%E7%9A%84%E5%AE%9E%E7%8E%B0%E3%80%81%E9%81%8D%E5%8E%86-traversal-%E5%92%8C%E5%BA%94%E7%94%A8"><span class="nav-number">1.0.1.</span> <span class="nav-text">树的实现、遍历(traversal)和应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91-Binary-Tree"><span class="nav-number">1.0.2.</span> <span class="nav-text">二叉树(Binary Tree)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">二叉树的应用</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lossinx"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">lossinx</p>
+  <div class="site-description" itemprop="description">子虚乌有</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="mailto:kirt87@163.com" title="E-Mail → mailto:kirt87@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://www.yasukawa.xyz/" title="http:&#x2F;&#x2F;www.yasukawa.xyz&#x2F;" rel="noopener" target="_blank">安川</a>
+        </li>
+    </ul>
+  </div>
+
+        </section>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.lossinx.site/reports/81b0f4f897cf/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="lossinx">
+      <meta itemprop="description" content="子虚乌有">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lossinx的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          《数据结构和算法分析 C语言描述》笔记#4 树
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-10-29 23:51:28" itemprop="dateCreated datePublished" datetime="2020-10-29T23:51:28+08:00">2020-10-29</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-10-30 17:16:27" itemprop="dateModified" datetime="2020-10-30T17:16:27+08:00">2020-10-30</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/reports/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">点击查看详情。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <ul>
+<li><h2 id="树-Tree"><a href="#树-Tree" class="headerlink" title="树(Tree)"></a>树(Tree)</h2><p>相比前面提到的链表，本章介绍的树更加适合在拥有大量输入时的线性访问，事实上，它的大部分操作的运行时间都是$O(\log N)$。</p>
+<p>我们将树称为树的一个重要原因便是它的结构酷似自然界中的树。定义树的一种自然方法便是递归，一棵非空的树将由一个<code>根节点(root node)</code>。也就是说，一棵非空的树是由若干棵<code>子树(child tree)</code>组成的，而我们将连接这些树或者说节点的联系称为<code>边(edge)</code>。</p>
+<ul>
+<li><p>父亲(parent)</p>
+<p>相对它的子节点而言。</p>
+</li>
+<li><p>儿子(child)</p>
+<p>相对它的父节点而言。</p>
+</li>
+<li><p>树叶(leaf)</p>
+<p>树叶指的是没有子树（节点）的节点。</p>
+</li>
+<li><p>兄弟(sibling)</p>
+<p>拥有同一个父节点的节点互为兄弟。</p>
+</li>
+<li><p>祖父(grandparent)</p>
+<p>父节点的父节点。</p>
+</li>
+<li><p>孙子(grandchild)</p>
+<p>子节点的子节点。</p>
+</li>
+<li><p>深度(depth)与高度(height)</p>
+<blockquote>
+<p>注意，当参考系（树的选取）发生变化时，同一个节点的深度或者高度可能也会发生变化。</p>
+</blockquote>
+<ul>
+<li><p>深度</p>
+<p>每个节点的深度指的是从根到该节点的唯一路径的长，或者说是经过的边的条数。根的深度为0。</p>
+</li>
+<li><p>高度</p>
+<p>每个节点到一片树叶的最长路径的长。所有的树叶的高都为0。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h4 id="树的实现、遍历-traversal-和应用"><a href="#树的实现、遍历-traversal-和应用" class="headerlink" title="树的实现、遍历(traversal)和应用"></a>树的实现、遍历(traversal)和应用</h4><p>如同我们在上一章通过指针实现链表一样，我们也可以用指针实现树的结构。只需要改变一个节点中指向其他节点的指针个数便可以得到简单的树模型。</p>
+<p>树的遍历可根据节点处理顺序简单分为<code>先序(preorder)</code>，<code>中序(inorder)</code>和<code>后序(postorder)</code>三种遍历方式。</p>
+<ul>
+<li><p>先序遍历</p>
+<p>对一个节点的处理工作为最最优先，在处理完该节点本身后再处理子节点。</p>
+<p>一个典型的应用便是UNIX、VAX/VMS和DOS等系统内的目录。我们可以通过书上提供的一个例程来输出目录结构，这是一个典型的先序遍历：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ListDir</span><span class="params">(DirectoryOrFile D, <span class="keyword">int</span> Depth)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(D is a legitimate entry)</span><br><span class="line">    &#123;</span><br><span class="line">        printName(D, Depth);</span><br><span class="line">        <span class="keyword">if</span>(D is a directory)</span><br><span class="line">            <span class="keyword">for</span> each child, C, of D</span><br><span class="line">                ListDir(C, Depth+<span class="number">1</span>);</span><br><span class="line">              </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ListDirectory</span><span class="params">(DirectoryOrFile D)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ListDir(D, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>中序遍历</p>
+<p>中序遍历仅在二叉树存在，它按照左子树-&gt;自身-&gt;右子树的顺序进行处理。</p>
+</li>
+<li><p>后序遍历</p>
+<p>后序遍历和前序遍历相反，在处理完所有子节点后再处理父节点。</p>
+</li>
+</ul>
+<ul>
+<li><h4 id="二叉树-Binary-Tree"><a href="#二叉树-Binary-Tree" class="headerlink" title="二叉树(Binary Tree)"></a>二叉树(Binary Tree)</h4><p>二叉树是树的一种，它的特殊之处在于每个节点的子节点数量最多为<code>2</code>。二叉树根据节点的排列情况可以简单地分为斜树、满二叉树、完全二叉树。</p>
+<ul>
+<li><p>斜树</p>
+<p>斜树是所有节点只有左子树或者只有右子树，看起来就像是一条斜线。</p>
+</li>
+<li><p>满二叉树</p>
+<p>除树叶外的所有节点都有左子树和右子树，并且所有树叶同高同深度，因此它是左右对称的。</p>
+</li>
+<li><p>完全二叉树</p>
+<p>左右子树深度差最多为<code>1</code>，并且往往是左子树深度更高。一棵满二叉树可以是完全二叉树，但一棵完全二叉树不一定是满二叉树，也就是说它不一定是左右对称的。</p>
+</li>
+</ul>
+<p>二叉树平均来说深度比$N$小很多，它的平均深度为$O(\sqrt N)$。而对于二叉查找树来说，深度的平均值为$O(\log N)$。记住，这些深度仅仅是平均深度，存在一些坏东西会让深度达到$N-1$，比如上面提到的斜树，它是一种最坏情况。顺手一提，二叉树本质上就是图。</p>
+<ul>
+<li><h5 id="二叉树的应用"><a href="#二叉树的应用" class="headerlink" title="二叉树的应用"></a>二叉树的应用</h5><ul>
+<li><p>表达式树(expression tree)</p>
+<p>在一棵表达式树中，树叶是操作数(operand)，是常数或者变量；而其他的节点都是操作符(operator)。我们可以通过表达式树来描述一道表达式。</p>
+</li>
+<li><p>二叉查找树(binary search tree)</p>
+<p>二叉查找树与原始二叉树的最大区别在于它为左右子树添加了优先级，对于一个节点来说，它的左子树中的所有关键字必定小于它，它的右子树中的所有关键字必定大于它。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># BST的声明</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ElementType int</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> <span class="title">Node</span>;</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">Position</span>;</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">SearchTree</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="function">AvlTree <span class="title">MakeEmpty</span><span class="params">(AvlTree T)</span></span>;</span><br><span class="line"><span class="function">AvlTree <span class="title">Find</span><span class="params">(ElementType X, AvlTree T)</span></span>;</span><br><span class="line"><span class="function">AvlTree <span class="title">FindMin</span><span class="params">(AvlTree T)</span></span>;</span><br><span class="line"><span class="function">AvlTree <span class="title">FindMax</span><span class="params">(AvlTree T)</span></span>;</span><br><span class="line"><span class="function">AvlTree <span class="title">Insert</span><span class="params">(ElementType X, AvlTree T)</span></span>;</span><br><span class="line"><span class="function">AvlTree <span class="title">Delete</span><span class="params">(ElementType X, AvlTree T)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    ElementType Element;</span><br><span class="line">    SearchTree Left;</span><br><span class="line">    SearchTree Right;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>MakeEmpty</code>初始化树。</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">SearchTree <span class="title">MakeEmpty</span><span class="params">(SearchTree T)</span></span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">       <span class="keyword">if</span>(T != <span class="literal">NULL</span>)</span><br><span class="line">       &#123;</span><br><span class="line">           MakeEmpty(T-&gt;Left);</span><br><span class="line">           MakeEmpty(T-&gt;Right);</span><br><span class="line">           <span class="built_in">free</span>(T);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>Find</code>查找并返回指定关键字的指针</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Position <span class="title">Find</span><span class="params">(ElementType X, SearchTree T)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T != <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">if</span>(X &lt; T-&gt;Element)</span><br><span class="line">        <span class="keyword">return</span> Find(X,T-&gt;Left);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(X &gt; T-&gt;Element)</span><br><span class="line">        <span class="keyword">return</span> Find(X,T-&gt;Right);</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        <span class="keyword">return</span> T;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>FindMin</code>查找并返回最小关键字的指针</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Position <span class="title">FindMin</span><span class="params">(SearchTree T)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ( T == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (T-&gt;Left == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> T;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> FindMin(T-&gt;Left);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>FindMax</code>查找并返回最大关键字的指针</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Position <span class="title">FindMax</span><span class="params">(SearchTree T)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ( T == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (T-&gt;Right == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span> T;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> FindMax(T-&gt;Right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> <code>Insert</code>插入元素</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">SearchTree <span class="title">Insert</span><span class="params">(ElementType X, SearchTree T)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(T == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        T = (SearchTree) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct Node));</span><br><span class="line">        <span class="keyword">if</span>(T == <span class="literal">NULL</span>)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;Out of space!&quot;</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            T-&gt;Element = X;</span><br><span class="line">            T-&gt;Left = T-&gt;Right = <span class="literal">NULL</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(X &lt; T-&gt;Element)</span><br><span class="line">    &#123;</span><br><span class="line">        T-&gt;Left= Insert(X, T-&gt;Left);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(X &gt; T-&gt;Element)</span><br><span class="line">    &#123;</span><br><span class="line">        T-&gt;Right= Insert(X, T-&gt;Right);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> T;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>Delete</code>删除元素</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">SearchTree <span class="title">Delete</span><span class="params">(ElementType X, SearchTree T)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Position tmpCell;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>( T == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Error! No such element\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>( X &lt; T-&gt;Element)</span><br><span class="line">        T-&gt;Left = Delete(X, T-&gt;Left);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>( X &gt; T-&gt;Element)</span><br><span class="line">        T-&gt;Right = Delete(X, T-&gt;Left);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>( T-&gt;Left &amp;&amp; T-&gt;Right)</span><br><span class="line">    &#123;</span><br><span class="line">        tmpCell = FindMin(T-&gt;Right);</span><br><span class="line">        T-&gt;Element = tmpCell-&gt;Element;</span><br><span class="line">        T-&gt;Right = Delete(T-&gt;Element, T-&gt;Right);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">            tmpCell = T;</span><br><span class="line">            <span class="keyword">if</span>(T-&gt;Left == <span class="literal">NULL</span>)</span><br><span class="line">                T = T-&gt;Right;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(T-&gt;Right == <span class="literal">NULL</span>)</span><br><span class="line">                T = T-&gt;Left;</span><br><span class="line">            <span class="built_in">free</span>(tmpCell);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> T;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>注意，该例程效率并不高，它沿着树进行了两遍搜索。原书推荐写一个特殊的<code>DeleteMin</code>以提升效率。</p>
+<ul>
+<li><p>懒惰删除(lazy deletion)</p>
+<p>当删除的次数不多的时候，我们可以考虑懒惰删除的处理方案。懒惰删除和真正的删除相比，只是将要删除的节点标记为已删除/不存在，并没有切实地将其从树中移除。这需要在每个节点加上一个是否被删除的记号。懒惰删除对于重复关键字的情形，能减少开销，只需要改变记号便能切换删除状态。</p>
+</li>
+</ul>
+</li>
+<li><p>AVL(Adelson-Velskii和Landis)树</p>
+<p>我们前面提到的平均深度只是一个平均的情况，在实际应用中原始的二叉树经过大量的Insert/Delete会出现一些性能上的问题。为了保证性能，我们需要对二叉树的结构进行<code>平衡(balance)</code>操作，这是一个典型的方案，而AVL树便是最老的一种平衡查找树。</p>
+<p>在一棵AVL树中，左子树和右子树的高度最多差<code>1</code>，而一棵空树的高度为<code>-1</code>。</p>
+<p>假设我们以及拥有了一棵AVL树，然后对其进行插入操作，但是我们在插入一个节点后可能会破坏AVL树的平衡特性，即左右子树高度差超出<code>1</code>。为了保证AVL树的存在，我们必须对插入进行修正，让它在插入后仍然保持平衡。这种操作称为旋转(rotation)。</p>
+<p>旋转是AVL树中一个较为重要的概念。为了更容易理解我们可以遵循以下几条规则：</p>
+<ol>
+<li><p>旋转是发生在两个节点之间的。</p>
+</li>
+<li><p>旋转没有改变每个节点的关键值，仅仅改变了位置关系。</p>
+</li>
+<li><p>旋转往往从根节点出发。</p>
+<p>假设需要重新平衡的节点叫做α。在高度不平衡时，左右子树高度差2。</p>
+<p>| 简称 | 详情                          | 对应旋转         |<br>| —— | ——————————————- | ———————— |<br>| LL   | 对α左儿子的左子树进行一次插入 | 右单旋转         |<br>| LR   | 对α左儿子的右子树进行一次插入 | 先左旋转再右旋转 |<br>| RL   | 对α右儿子的左子树进行一次插入 | 先右旋转再左旋转 |<br>| RR   | 对α右儿子的右子树进行一次插入 | 左单旋转         |</p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>  - 单旋转
+
+    - 左旋转SingleRotateWithLeft
+
+      当我们发现树向右边倾斜时，即右子树的高度高于左子树高度（一般是相差为2）时，我们将进行左旋转以将树重新平衡为完全二叉树。
+
+      <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">  这个和下面的右旋转方法都只能在K2有左子树或右子树的情况下使用，</span></span><br><span class="line"><span class="comment">  它将K2和它的左子树旋转换位，</span></span><br><span class="line"><span class="comment">  然后更新了高并返回新的根节点</span></span><br><span class="line"><span class="comment">  **/</span></span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">static</span> Position <span class="title">SingleRotateWithLeft</span><span class="params">(Position K2)</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">      Position K1;</span><br><span class="line">      </span><br><span class="line">      K1=K2-&gt;Left;</span><br><span class="line">      K2-&gt;Left=K1-&gt;Right;<span class="comment">//K2-&gt;Left=K2-&gt;Left-&gt;Right</span></span><br><span class="line">      K1-&gt;Right=K2;</span><br><span class="line">  </span><br><span class="line">    K2-&gt;height = Max(Height(K2-&gt;Left), Height(K2-&gt;Right)) + <span class="number">1</span>;</span><br><span class="line">      K1-&gt;height = Max(Height(K1-&gt;Left), Height(K2)) + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> K1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    - 右旋转SingleRotateWithRight
+
+      当我们发现树向左边倾斜时，即左子树的高度高于右子树高度（一般是相差为2）时，我们将进行右旋转以将树重新平衡为完全二叉树。
+
+      <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> Position <span class="title">SingleRotateWithLeft</span><span class="params">(Position K2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Position K1;</span><br><span class="line">    </span><br><span class="line">    K1=K2-&gt;Right;</span><br><span class="line">    K2-&gt;Right=K1-&gt;Left;</span><br><span class="line">    K1-&gt;Left=K2;</span><br><span class="line"></span><br><span class="line">  K2-&gt;height = Max(Height(K2-&gt;Right), Height(K2-&gt;Left)) + <span class="number">1</span>;</span><br><span class="line">    K1-&gt;height = Max(Height(K1-&gt;Right), Height(K2)) + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> K1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  - 双旋转
+
+    - LR左右旋DoubleRotateWithLeft
+
+      <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> AvlTree <span class="title">DoubleRotateWithLeft</span><span class="params">(Position K3)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    K3-&gt;Left = SingleRotateWithLeft(K3-&gt;Left);</span><br><span class="line">    <span class="keyword">return</span> SingleRotateWithRight(K3);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    - RL右左旋DoubleRotateWithRight
+
+      <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> AvlTree <span class="title">DoubleRotateWithRight</span><span class="params">(Position K3)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    K3-&gt;Left = SingleRotateWithRight(K3-&gt;Right);</span><br><span class="line">    <span class="keyword">return</span> SingleRotateWithLeft(K3);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+- 伸展树(splay tree)
+
+  伸展树保证从空树开始连续M次对树的操作最多花费$O(M\log N)$时间。在伸展树中我们每次访问一个特定的节点，都会将这个节点通过旋转变换为树根。这样做会使得一些经常被访问的节点会聚集在根附近，从而提升访问效率。原书在这里使用了摊还分析(amortized analysis)方法，$\log N$为伸展树每次操作的摊还代价。
+
+  相比AVL树，伸展树的编程实现要简单的多，不需要过多考虑许多情况和存储平衡信息（AVL树中的height）。在12章中我们会见到一中实战更好的伸展树变体。
+</code></pre><ul>
+<li><p>B树(B-tree)</p>
+<p>B树不是二叉树！</p>
+<p>相比二叉树来说，<strong>B树所有树叶都在相同深度上</strong>，这与满二叉树有相似之处。</p>
+<p>而<strong>它的根要么是一片树叶（原文可能更强调它没有子节点），要么它的子节点数量在$2和M$之间</strong>。<strong>而除根外的所有非树叶节点的子节点数量在$\frac{M}{2}和M$之间。</strong></p>
+<blockquote>
+<p>B树所有数据都存储在树叶上。</p>
+</blockquote>
+<p>我们将3阶B树称为2-3树。而4阶被称为2-3-4树。</p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/note/" rel="tag"># 笔记</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/reports/ab388864bf55/" rel="prev" title="《数据结构和算法分析 C语言描述》笔记#5 散列">
+                  <i class="fa fa-chevron-left"></i> 《数据结构和算法分析 C语言描述》笔记#5 散列
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/reports/bb8f1d957d5f/" rel="next" title="《数据结构和算法分析 C语言描述》笔记#3 表、栈和队列">
+                  《数据结构和算法分析 C语言描述》笔记#3 表、栈和队列 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lossinx</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
