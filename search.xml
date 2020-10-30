@@ -32,19 +32,6 @@
       </tags>
   </entry>
   <entry>
-    <title>《数据结构和算法分析 C语言描述》笔记#10 算法设计技巧</title>
-    <url>/reports/342f59392f1a/</url>
-    <content><![CDATA[<blockquote>
-<h4 id="贪婪算法"><a href="#贪婪算法" class="headerlink" title="贪婪算法"></a>贪婪算法</h4></blockquote>
-]]></content>
-      <categories>
-        <category>读书笔记</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>《数据结构和算法分析 C语言描述》笔记#1 引论</title>
     <url>/reports/576f952bdc28/</url>
     <content><![CDATA[<ol>
@@ -132,6 +119,19 @@ AD\equiv BD(\mod N)</script><p>即N整除A-B，也就是说无论A还是B除以N
 </ul>
 </li>
 </ol>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《数据结构和算法分析 C语言描述》笔记#10 算法设计技巧</title>
+    <url>/reports/342f59392f1a/</url>
+    <content><![CDATA[<blockquote>
+<h4 id="贪婪算法"><a href="#贪婪算法" class="headerlink" title="贪婪算法"></a>贪婪算法</h4></blockquote>
 ]]></content>
       <categories>
         <category>读书笔记</category>
