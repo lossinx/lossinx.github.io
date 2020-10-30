@@ -32,102 +32,6 @@
       </tags>
   </entry>
   <entry>
-    <title>《数据结构和算法分析 C语言描述》笔记#1 引论</title>
-    <url>/reports/576f952bdc28/</url>
-    <content><![CDATA[<ol>
-<li><h4 id="一个好的算法应该做什么"><a href="#一个好的算法应该做什么" class="headerlink" title="一个好的算法应该做什么"></a>一个好的算法应该做什么</h4><p>在一个合理的时间内尽可能地处理足够多的数据，并且能解决一类问题而不仅仅是对某个偶然情况有用。</p>
-</li>
-<li><h4 id="数学知识的复习"><a href="#数学知识的复习" class="headerlink" title="数学知识的复习"></a>数学知识的复习</h4><ol>
-<li><h5 id="指数"><a href="#指数" class="headerlink" title="指数"></a>指数</h5><script type="math/tex; mode=display">
-X^A X^B=X^{A+B}</script><script type="math/tex; mode=display">
-\frac{X^A}{X^B}=X^{A-B}</script><script type="math/tex; mode=display">
-(X^A)^B=X^{AB}</script><script type="math/tex; mode=display">
-X^N+X^N=2X^N \neq X^{2N}</script><script type="math/tex; mode=display">
-2^N+2^N=2^{N+1}</script></li>
-</ol>
-</li>
-</ol>
-<ol>
-<li><h5 id="对数"><a href="#对数" class="headerlink" title="对数"></a>对数</h5><blockquote>
-<p>“在计算机科学中，除非有特别声明，所有的对数均以2为底。”</p>
-</blockquote>
-</li>
-</ol>
-<script type="math/tex; mode=display">
-   \log_AB=\frac{\log_CB}{\log_CA}(C>0)</script><script type="math/tex; mode=display">
-   \log_2{AB}=\log_2A+\log_2B</script><script type="math/tex; mode=display">
-   \log_2A-\log_2B=\log_2{\frac{A}{B}}</script><script type="math/tex; mode=display">
-   \log_2{A^B}=B\log_2A</script><script type="math/tex; mode=display">
-   \log_2X<X(X>0)</script><script type="math/tex; mode=display">
-   \log_21=0;
-    \log_2{1024}=10;
-    \log_2{1048576}=20</script><ol>
-<li><h5 id="级数"><a href="#级数" class="headerlink" title="级数"></a>级数</h5><ul>
-<li><p><strong>几何级数（等比级数）</strong></p>
-<script type="math/tex; mode=display">
-\sum_{i=0}^N{2^i}=2^{N+1}-1</script><script type="math/tex; mode=display">
-\sum_{i=0}^N{A^i}=\frac{A^{N+1}-1}{A^N-1}</script><p>特别的，在第二个公式中 <code>0&lt;A&lt;1</code> 时，</p>
-<script type="math/tex; mode=display">
-\sum_{i=0}^N{A^i} \leq \frac{1}{1-A}</script><script type="math/tex; mode=display">
-\lim_{N\rightarrow\infty}\sum_{i=0}^N{A^i} = \frac{1}{1-A}</script></li>
-<li><p><strong>算术级数（等差级数）</strong></p>
-<script type="math/tex; mode=display">
-如 \sum_{i=1}^Ni=\frac{N(N+1)}{2}</script><script type="math/tex; mode=display">
-\sum_{i=1}^Ni^2=\frac{N(N+1)(2N+1)}{6}\approx \frac{N^3}{3}</script><script type="math/tex; mode=display">
-\sum_{i=1}^Ni^k\approx\frac{N^{k+1}}{|k+1|}(k\neq -1)</script><p>注： 当k=-1，</p>
-<script type="math/tex; mode=display">
-\frac{1}{i}为调和（级）数</script></li>
-</ul>
-</li>
-<li><h5 id="模运算"><a href="#模运算" class="headerlink" title="模运算"></a>模运算</h5><ul>
-<li><p><strong>同余</strong></p>
-<script type="math/tex; mode=display">
-A\equiv B(\mod N)</script><script type="math/tex; mode=display">
-A+C\equiv B+C(\mod N)</script><script type="math/tex; mode=display">
-AD\equiv BD(\mod N)</script><p>即N整除A-B，也就是说无论A还是B除以N，所得余数都相同。</p>
-<p>如书中所举例子</p>
-<script type="math/tex; mode=display">
-81\equiv61\equiv1(\mod10)</script></li>
-</ul>
-</li>
-<li><h5 id="证明方法"><a href="#证明方法" class="headerlink" title="证明方法"></a>证明方法</h5><ul>
-<li><strong>归纳法</strong><ol>
-<li>证明基准情形(base case)</li>
-<li>归纳假设(inductive hypothesis)</li>
-</ol>
-</li>
-<li><p><strong>举反例法</strong></p>
-<ol>
-<li>举出任意不符合原定理的实例，原定理则不成立。</li>
-</ol>
-</li>
-<li><p><strong>反证法</strong></p>
-<ol>
-<li>假设定理不成立，再证明该假设导致某个已知性质不成立，从而说明原假设错误。</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><h5 id="递归简论"><a href="#递归简论" class="headerlink" title="递归简论"></a>递归简论</h5><ul>
-<li><h6 id="基本法则"><a href="#基本法则" class="headerlink" title="基本法则"></a>基本法则</h6><ol>
-<li><strong>基准情形(base case)</strong>：存在某些不用递归就能求解的情形。</li>
-<li><strong>不断推进(making progress)</strong>：需要递归求解的情形，它们的递归调用必须朝着产生基准情形的方向前进（即最后必须转换为基准情形的变体）。</li>
-<li><strong>设计法则(design rule)</strong>：假设所有的递归调用都能运行。即不用太过关心计算机是如何具体进行递归调用的，设计者只需要关注逻辑的正确性。</li>
-<li><strong>合成效益法则(compound interest rule)</strong>：在求解同一个问题的同一实例时，不要在不同的递归调用中做重复性的工作。换句话说，不要在递归中进行重复的计算，如使用递归计算斐波那契数列和，这样对递归错误的使用会带来大量不必要的开销。</li>
-</ol>
-</li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>读书笔记</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>《数据结构和算法分析 C语言描述》笔记#10 算法设计技巧</title>
     <url>/reports/342f59392f1a/</url>
     <content><![CDATA[<blockquote>
@@ -336,6 +240,234 @@ AD\equiv BD(\mod N)</script><p>即N整除A-B，也就是说无论A还是B除以N
       </tags>
   </entry>
   <entry>
+    <title>《数据结构和算法分析 C语言描述》笔记#1 引论</title>
+    <url>/reports/576f952bdc28/</url>
+    <content><![CDATA[<ol>
+<li><h4 id="一个好的算法应该做什么"><a href="#一个好的算法应该做什么" class="headerlink" title="一个好的算法应该做什么"></a>一个好的算法应该做什么</h4><p>在一个合理的时间内尽可能地处理足够多的数据，并且能解决一类问题而不仅仅是对某个偶然情况有用。</p>
+</li>
+<li><h4 id="数学知识的复习"><a href="#数学知识的复习" class="headerlink" title="数学知识的复习"></a>数学知识的复习</h4><ol>
+<li><h5 id="指数"><a href="#指数" class="headerlink" title="指数"></a>指数</h5><script type="math/tex; mode=display">
+X^A X^B=X^{A+B}</script><script type="math/tex; mode=display">
+\frac{X^A}{X^B}=X^{A-B}</script><script type="math/tex; mode=display">
+(X^A)^B=X^{AB}</script><script type="math/tex; mode=display">
+X^N+X^N=2X^N \neq X^{2N}</script><script type="math/tex; mode=display">
+2^N+2^N=2^{N+1}</script></li>
+</ol>
+</li>
+</ol>
+<ol>
+<li><h5 id="对数"><a href="#对数" class="headerlink" title="对数"></a>对数</h5><blockquote>
+<p>“在计算机科学中，除非有特别声明，所有的对数均以2为底。”</p>
+</blockquote>
+</li>
+</ol>
+<script type="math/tex; mode=display">
+   \log_AB=\frac{\log_CB}{\log_CA}(C>0)</script><script type="math/tex; mode=display">
+   \log_2{AB}=\log_2A+\log_2B</script><script type="math/tex; mode=display">
+   \log_2A-\log_2B=\log_2{\frac{A}{B}}</script><script type="math/tex; mode=display">
+   \log_2{A^B}=B\log_2A</script><script type="math/tex; mode=display">
+   \log_2X<X(X>0)</script><script type="math/tex; mode=display">
+   \log_21=0;
+    \log_2{1024}=10;
+    \log_2{1048576}=20</script><ol>
+<li><h5 id="级数"><a href="#级数" class="headerlink" title="级数"></a>级数</h5><ul>
+<li><p><strong>几何级数（等比级数）</strong></p>
+<script type="math/tex; mode=display">
+\sum_{i=0}^N{2^i}=2^{N+1}-1</script><script type="math/tex; mode=display">
+\sum_{i=0}^N{A^i}=\frac{A^{N+1}-1}{A^N-1}</script><p>特别的，在第二个公式中 <code>0&lt;A&lt;1</code> 时，</p>
+<script type="math/tex; mode=display">
+\sum_{i=0}^N{A^i} \leq \frac{1}{1-A}</script><script type="math/tex; mode=display">
+\lim_{N\rightarrow\infty}\sum_{i=0}^N{A^i} = \frac{1}{1-A}</script></li>
+<li><p><strong>算术级数（等差级数）</strong></p>
+<script type="math/tex; mode=display">
+如 \sum_{i=1}^Ni=\frac{N(N+1)}{2}</script><script type="math/tex; mode=display">
+\sum_{i=1}^Ni^2=\frac{N(N+1)(2N+1)}{6}\approx \frac{N^3}{3}</script><script type="math/tex; mode=display">
+\sum_{i=1}^Ni^k\approx\frac{N^{k+1}}{|k+1|}(k\neq -1)</script><p>注： 当k=-1，</p>
+<script type="math/tex; mode=display">
+\frac{1}{i}为调和（级）数</script></li>
+</ul>
+</li>
+<li><h5 id="模运算"><a href="#模运算" class="headerlink" title="模运算"></a>模运算</h5><ul>
+<li><p><strong>同余</strong></p>
+<script type="math/tex; mode=display">
+A\equiv B(\mod N)</script><script type="math/tex; mode=display">
+A+C\equiv B+C(\mod N)</script><script type="math/tex; mode=display">
+AD\equiv BD(\mod N)</script><p>即N整除A-B，也就是说无论A还是B除以N，所得余数都相同。</p>
+<p>如书中所举例子</p>
+<script type="math/tex; mode=display">
+81\equiv61\equiv1(\mod10)</script></li>
+</ul>
+</li>
+<li><h5 id="证明方法"><a href="#证明方法" class="headerlink" title="证明方法"></a>证明方法</h5><ul>
+<li><strong>归纳法</strong><ol>
+<li>证明基准情形(base case)</li>
+<li>归纳假设(inductive hypothesis)</li>
+</ol>
+</li>
+<li><p><strong>举反例法</strong></p>
+<ol>
+<li>举出任意不符合原定理的实例，原定理则不成立。</li>
+</ol>
+</li>
+<li><p><strong>反证法</strong></p>
+<ol>
+<li>假设定理不成立，再证明该假设导致某个已知性质不成立，从而说明原假设错误。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><h5 id="递归简论"><a href="#递归简论" class="headerlink" title="递归简论"></a>递归简论</h5><ul>
+<li><h6 id="基本法则"><a href="#基本法则" class="headerlink" title="基本法则"></a>基本法则</h6><ol>
+<li><strong>基准情形(base case)</strong>：存在某些不用递归就能求解的情形。</li>
+<li><strong>不断推进(making progress)</strong>：需要递归求解的情形，它们的递归调用必须朝着产生基准情形的方向前进（即最后必须转换为基准情形的变体）。</li>
+<li><strong>设计法则(design rule)</strong>：假设所有的递归调用都能运行。即不用太过关心计算机是如何具体进行递归调用的，设计者只需要关注逻辑的正确性。</li>
+<li><strong>合成效益法则(compound interest rule)</strong>：在求解同一个问题的同一实例时，不要在不同的递归调用中做重复性的工作。换句话说，不要在递归中进行重复的计算，如使用递归计算斐波那契数列和，这样对递归错误的使用会带来大量不必要的开销。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《数据结构和算法分析 C语言描述》笔记#3 表、栈和队列</title>
+    <url>/reports/bb8f1d957d5f/</url>
+    <content><![CDATA[<ul>
+<li><h3 id="什么是抽象数据类型-Abstract-Data-Type-ADT"><a href="#什么是抽象数据类型-Abstract-Data-Type-ADT" class="headerlink" title="什么是抽象数据类型(Abstract Data Type, ADT)"></a>什么是抽象数据类型(Abstract Data Type, ADT)</h3><p>出于模块化设计思想，人们将一些操作的集合的数学模型称为ADT。ADT的诞生使得编程更加清晰，程序员只需要通过ADT操作便能方便的操作数据，而这些操作对于程序的其余部分是完全透明的，也就是说其余部分并不需要关注这部分的具体实现。常见的ADT有<strong>表(List)</strong>、<strong>集合(Set)</strong>、<strong>图(Graph)</strong>等。如果读者了解过抽象类(Abstract Class)或接口(Interface)的概念，会很容易接受ADT是抽象事物的事实。</p>
+</li>
+<li><h3 id="表-List"><a href="#表-List" class="headerlink" title="表(List)"></a>表(List)</h3><p>表可以看作一种容器，这个容器里面容纳了若干元素(element)。一个表拥有多少个元素，它的大小就为多少。当一个表含有0个元素，也就是大小为0时，我们称它为<strong>空表(empty list)</strong>。如前面提到的，ADT是一些操作的集合，对于表来说，我们有下列常见操作（仅举例）：</p>
+<p>| 名称              | 作用               |<br>| ————————- | ————————— |<br>| <code>PrintList()</code>     | 打印表             |<br>| <code>Insert(Element)</code> | 插入元素           |<br>| <code>Delete(Element)</code> | 删除元素           |<br>| <code>Find(Element)</code>   | 返回指定元素的位置 |</p>
+<p>在这里我们也仅仅是给出了表的概念，但没有给出它的具体实现。事实上，我们对表的所有操作都能用数组来实现。但是由于数组本身性质，使用数组可能会造成大量的空间浪费。而且为了维护表中元素的位置关系，我们还会花费大量时间。所以我们一般不用简单数组来实现表。</p>
+<ul>
+<li><p>链表(linked list)</p>
+<ul>
+<li><p>单链表(singly linked list)</p>
+<p>当链表没有（单双等）前缀时，一般指的是单链表。链表，顾名思义，表（或者说表中的元素们）以链的形式呈现。即每个单元（元素）不仅含有自己的信息，还有指向下一个单元的指针（Next指针）。最后一个单元因为没有后续单元，指向<code>NULL</code>（ASCII C规定NULL为0）。</p>
+<ul>
+<li><p>程序实现细节</p>
+<ul>
+<li><p>添加表头</p>
+<p>为了避免删除操作在某些特殊情况下带来的问题，我们可以添加<strong>表头</strong>（<strong>header</strong>，也可称作<strong>哑节点dummy node</strong>）。表头是一个假想的单元，它不包含实际的元素，仅仅当作一个标志。它的使用可以帮助我们表达基本的指针操作，却不会使得特殊情况下代码变得混乱不堪。但是否使用表头取决于程序员自己。</p>
+</li>
+</ul>
+</li>
+<li><p>常见错误</p>
+<ol>
+<li>程序崩溃，系统报错<ul>
+<li>错误的使用指针<ol>
+<li>初始化变量失败</li>
+<li>没有对指针进行<code>NULL</code>检查</li>
+<li>出现野指针</li>
+</ol>
+</li>
+<li>错误的分配内存<ol>
+<li>当某些内存不再需要时，记得及时<code>free</code></li>
+<li>不要无谓的分配内存，当分配内存时注意是否有必要</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>双链表(doubly linked list)</p>
+<p>有些时候可能我们需要倒序的扫描链表，这种时候单链表就显得有些无能为力了。为了解决这个问题，我们可以在每个单元上再加上一个指向前一个单元的指针。这增加了时间和空间的开销，但简化了一些操作。</p>
+</li>
+<li><p>循环链表(circular linked list)</p>
+<p>还可以让最后一单元的下一个单元的指针指向第一个单元。这与链表是单链表还是双链表无关，仅仅使得链表形成一个闭环。</p>
+</li>
+<li><p>游标(cursor)实现链表</p>
+<p>一些语言不支持指针，我们可以用游标法来模仿指针。只要能实现下面两条特性即可：</p>
+<ol>
+<li>数据存储在一组结构体中。每一个结构体包含数据以及指向下一个结构体的指针。</li>
+<li>一个新的结构体可以通过调用<code>malloc</code>方法而从系统全局内存(global memory)中得到，并且可以通过<code>free</code>方法释放。</li>
+</ol>
+</li>
+<li><p>应用</p>
+<ol>
+<li><p>平衡符号</p>
+<p>我们可以用栈来检测是否所有括号等成对符号是否成对完整出现。</p>
+</li>
+<li><p>后缀表达式(postfix)/逆波兰(reverse Polish)表达式</p>
+</li>
+<li><p>函数调用</p>
+<p>比较常见的例子可以参考javascript的执行上下文机制。</p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>多重表</p>
+<ul>
+<li><p>数组实现</p>
+<p>我们可以用二维数组实现一个网状结构的表。这很容易理解，故不赘述。</p>
+</li>
+<li><p>链表实现</p>
+<p>只要在每个单元上都多加上几个指针，我们就可以实现这个网状结构。</p>
+</li>
+</ul>
+</li>
+<li><p>栈(Stack)</p>
+<blockquote>
+<p>“栈很可能是计算机科学中仅次于数组的最基本的数据结构。”</p>
+</blockquote>
+<p>栈是一种特殊的表（亦可称作LIFO<sup><a href="#fn_1" id="reffn_1">1</a></sup>表），它的插入和删除操作只能作用在一个固定位置上，只有这个固定位置上的元素是唯一可见的。这个固定的位置是表的末端，被称作栈的<strong>顶(top)</strong>。对栈的基本操作是<code>push(进栈)</code>，<code>pop(出栈)</code>和<code>top(检查顶并返回它的值)</code>。值得一提的是，对空栈进行<code>pop/top</code>都是错误的，一个正确的栈ADT<span style="color: red;">不应该允许这种行为</span>。而push时因为内存空间用尽不够，则是实现错误，与ADT错误无关。</p>
+<ul>
+<li><p>栈的链表实现$O(1)$</p>
+<p>我们可以使用单链表来实现一个简单的栈模型。只需要将表的前端作为栈顶，我们便可以得到一个栈模型。通过链表完成的实现只花费常数时间，但是也带来了<code>malloc</code>和<code>free</code>的昂贵开销。</p>
+</li>
+<li><p>栈的数组实现$O(1)$</p>
+<p>使用一个数组实现栈很简单。它同样花费常数时间（原书写的是“非常快的常数时间”）。</p>
+</li>
+<li><p>不要忽略错误检测</p>
+<p>错误检测的确很影响栈的执行效率，甚至可能会使得时间开销加倍。所以我们一般在栈例程中省去了错误检测。虽然大多数时候程序得以正常运行，但我们应该随时准备好错误检测以防止不必要的损失。</p>
+</li>
+</ul>
+</li>
+<li><p>队列(Queue)</p>
+<p>在某种意义上，我们可以把队列看作栈的变种。因为它不仅像栈那样拥有一个在表的末端的队尾(rear)，还拥有一个在表的开头的队头(front)，<code>Enqueue(入队)</code>是在队尾插入一个元素，而<code>Dequeue(出队)</code>则是删除或返回队头的元素。</p>
+<ul>
+<li><p>链表实现</p>
+<p>在栈的链表实现上稍作改动，加上队头，我们便可以完成一个简单的队列实现。</p>
+</li>
+<li><p>循环数组实现</p>
+<ul>
+<li>注意<ol>
+<li>记得检测队列是否为空。</li>
+<li>保证你所有的例程的实现方法统一。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>队列的应用</p>
+<ol>
+<li>各种各样的排队</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote id="fn_1">
+<sup>1</sup>. Last In First Out，即后进先出。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>《数据结构和算法分析 C语言描述》笔记#4 树</title>
     <url>/reports/81b0f4f897cf/</url>
     <content><![CDATA[<ul>
@@ -517,129 +649,63 @@ AD\equiv BD(\mod N)</script><p>即N整除A-B，也就是说无论A还是B除以N
       </tags>
   </entry>
   <entry>
-    <title>《数据结构和算法分析 C语言描述》笔记#3 表、栈和队列</title>
-    <url>/reports/bb8f1d957d5f/</url>
-    <content><![CDATA[<ul>
-<li><h3 id="什么是抽象数据类型-Abstract-Data-Type-ADT"><a href="#什么是抽象数据类型-Abstract-Data-Type-ADT" class="headerlink" title="什么是抽象数据类型(Abstract Data Type, ADT)"></a>什么是抽象数据类型(Abstract Data Type, ADT)</h3><p>出于模块化设计思想，人们将一些操作的集合的数学模型称为ADT。ADT的诞生使得编程更加清晰，程序员只需要通过ADT操作便能方便的操作数据，而这些操作对于程序的其余部分是完全透明的，也就是说其余部分并不需要关注这部分的具体实现。常见的ADT有<strong>表(List)</strong>、<strong>集合(Set)</strong>、<strong>图(Graph)</strong>等。如果读者了解过抽象类(Abstract Class)或接口(Interface)的概念，会很容易接受ADT是抽象事物的事实。</p>
-</li>
-<li><h3 id="表-List"><a href="#表-List" class="headerlink" title="表(List)"></a>表(List)</h3><p>表可以看作一种容器，这个容器里面容纳了若干元素(element)。一个表拥有多少个元素，它的大小就为多少。当一个表含有0个元素，也就是大小为0时，我们称它为<strong>空表(empty list)</strong>。如前面提到的，ADT是一些操作的集合，对于表来说，我们有下列常见操作（仅举例）：</p>
-<p>| 名称              | 作用               |<br>| ————————- | ————————— |<br>| <code>PrintList()</code>     | 打印表             |<br>| <code>Insert(Element)</code> | 插入元素           |<br>| <code>Delete(Element)</code> | 删除元素           |<br>| <code>Find(Element)</code>   | 返回指定元素的位置 |</p>
-<p>在这里我们也仅仅是给出了表的概念，但没有给出它的具体实现。事实上，我们对表的所有操作都能用数组来实现。但是由于数组本身性质，使用数组可能会造成大量的空间浪费。而且为了维护表中元素的位置关系，我们还会花费大量时间。所以我们一般不用简单数组来实现表。</p>
+    <title>《数据结构和算法分析 C语言描述》笔记#6  堆</title>
+    <url>/reports/8a884bafbfc4/</url>
+    <content><![CDATA[<blockquote>
+<h4 id="堆-Heap"><a href="#堆-Heap" class="headerlink" title="堆(Heap)"></a>堆(Heap)</h4></blockquote>
 <ul>
-<li><p>链表(linked list)</p>
+<li><p>二叉堆(binary heap)</p>
+<p>一般我们不加修饰地使用堆这个词时，一般指的都是二叉堆。堆具有两个性质：结构性和堆序性。</p>
 <ul>
-<li><p>单链表(singly linked list)</p>
-<p>当链表没有（单双等）前缀时，一般指的是单链表。链表，顾名思义，表（或者说表中的元素们）以链的形式呈现。即每个单元（元素）不仅含有自己的信息，还有指向下一个单元的指针（Next指针）。最后一个单元因为没有后续单元，指向<code>NULL</code>（ASCII C规定NULL为0）。</p>
+<li><p>结构性</p>
+<p>堆是一棵完全二叉树。因为它是一棵完全二叉树，具有一定规律，所以我们可以简单的使用简单数组实现它。</p>
+</li>
+<li><p>堆序性</p>
+<p>对于每个节点来说，它的父节点的关键字都应该比这个节点小（根节点除外，它没有父节点）。</p>
+</li>
+</ul>
+<p>在介绍完了堆的两个性质后，我们便可以着手对其进行操作，值得一提的所有操作都必须满足这两个性质！</p>
 <ul>
-<li><p>程序实现细节</p>
+<li><p><code>Insert</code>插入</p>
+<p>在插入时我们有一个常见的策略，叫做<code>上滤(percolate up)</code>。这个策略指的是我们的插入操作将从树叶开始不断往上寻找一个可能的位置。这个位置将在完成插入的同时，保证了二叉堆的两个性质。当我们要插入的关键字是新的最小值时，这个过程会持续到上滤到根节点为止。</p>
+</li>
+<li><p><code>DeleteMin</code>删除最小元</p>
+<p> 当我们删除一个最小元时，根节点位置处会出现一个空穴。为了填补这个空穴，我们必须将子节点上移，这相当于把空穴不断下移，这个过程叫做<code>下滤(percolate down)</code>。</p>
+</li>
+<li><p><code>DecreaseKey</code>降低关键字的值</p>
+<p>降低指定位置关键字的值，如果破坏了堆的序，则需要通过上滤进行调整。</p>
+</li>
+<li><p><code>IncreaseKey</code>提升关键字的值</p>
+<p>提升指定位置关键字的值，如果破坏了堆的序，则需要通过下滤进行调整。</p>
+</li>
+<li><p><code>Delete</code>删除</p>
+<p>先通过<code>DecreaseKey</code>将指定节点上滤，再通过<code>DeleteMin</code>删除节点。</p>
+</li>
+<li><p><code>BuildHeap</code>构建堆</p>
+<p>通过N个关键字构建一个堆。</p>
+</li>
+</ul>
+</li>
+<li><p>d-堆</p>
+<p>d-堆恰似二叉堆，只不过每个节点至多可以有d个子节点。</p>
+</li>
+<li><p>左式堆(leftist heap)</p>
+<p>左式堆是二叉树，也具有和二叉树相同的结构性和堆序性，唯一的不同在于左式堆不是理想平衡的，或者说实际上趋于非常不平衡。</p>
 <ul>
-<li><p>添加表头</p>
-<p>为了避免删除操作在某些特殊情况下带来的问题，我们可以添加<strong>表头</strong>（<strong>header</strong>，也可称作<strong>哑节点dummy node</strong>）。表头是一个假想的单元，它不包含实际的元素，仅仅当作一个标志。它的使用可以帮助我们表达基本的指针操作，却不会使得特殊情况下代码变得混乱不堪。但是否使用表头取决于程序员自己。</p>
+<li><p>零路径长(Null Path Length, NPL)</p>
+<p>零路径长为一个节点到一个没有两个子节点的节点的最短路径长。具有0或1个子节点的节点的NPL为0（因为它们自己到自己的距离为0），而NPL(Null)为-1。</p>
 </li>
 </ul>
+<p>而对于左式堆来说，堆中的每一个节点X,左子节点的NPL大于等于右子节点的NPL。左式堆的这个性质将驱使左路径加深，右路径会变为堆中的最短路径。这将有利于合并操作。</p>
 </li>
-<li><p>常见错误</p>
-<ol>
-<li>程序崩溃，系统报错<ul>
-<li>错误的使用指针<ol>
-<li>初始化变量失败</li>
-<li>没有对指针进行<code>NULL</code>检查</li>
-<li>出现野指针</li>
-</ol>
+<li><p>斜堆(skew heap)/自适应堆(self-adjusting heap)</p>
+<p>斜堆是左式堆的自调节形式。它没有NPL的概念。</p>
 </li>
-<li>错误的分配内存<ol>
-<li>当某些内存不再需要时，记得及时<code>free</code></li>
-<li>不要无谓的分配内存，当分配内存时注意是否有必要</li>
-</ol>
+<li><p>二项队列(binomial queue)</p>
+<p>二项队列和前面提到的优先队列不同，它的结构与其说像树，不如说更像是伞形结构。一棵二项树$B<em>k$可以看作是$B_0$到$B</em>{k-1}$的根作为同一个节点的子节点的产物。这样一来，每个二项树的节点数为$2^k$，这个结构规律性十分明显。</p>
+<p>这样一来我们可以用这些二项树的集合表示任意大小的优先队列。</p>
 </li>
 </ul>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>双链表(doubly linked list)</p>
-<p>有些时候可能我们需要倒序的扫描链表，这种时候单链表就显得有些无能为力了。为了解决这个问题，我们可以在每个单元上再加上一个指向前一个单元的指针。这增加了时间和空间的开销，但简化了一些操作。</p>
-</li>
-<li><p>循环链表(circular linked list)</p>
-<p>还可以让最后一单元的下一个单元的指针指向第一个单元。这与链表是单链表还是双链表无关，仅仅使得链表形成一个闭环。</p>
-</li>
-<li><p>游标(cursor)实现链表</p>
-<p>一些语言不支持指针，我们可以用游标法来模仿指针。只要能实现下面两条特性即可：</p>
-<ol>
-<li>数据存储在一组结构体中。每一个结构体包含数据以及指向下一个结构体的指针。</li>
-<li>一个新的结构体可以通过调用<code>malloc</code>方法而从系统全局内存(global memory)中得到，并且可以通过<code>free</code>方法释放。</li>
-</ol>
-</li>
-<li><p>应用</p>
-<ol>
-<li><p>平衡符号</p>
-<p>我们可以用栈来检测是否所有括号等成对符号是否成对完整出现。</p>
-</li>
-<li><p>后缀表达式(postfix)/逆波兰(reverse Polish)表达式</p>
-</li>
-<li><p>函数调用</p>
-<p>比较常见的例子可以参考javascript的执行上下文机制。</p>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>多重表</p>
-<ul>
-<li><p>数组实现</p>
-<p>我们可以用二维数组实现一个网状结构的表。这很容易理解，故不赘述。</p>
-</li>
-<li><p>链表实现</p>
-<p>只要在每个单元上都多加上几个指针，我们就可以实现这个网状结构。</p>
-</li>
-</ul>
-</li>
-<li><p>栈(Stack)</p>
-<blockquote>
-<p>“栈很可能是计算机科学中仅次于数组的最基本的数据结构。”</p>
-</blockquote>
-<p>栈是一种特殊的表（亦可称作LIFO<sup><a href="#fn_1" id="reffn_1">1</a></sup>表），它的插入和删除操作只能作用在一个固定位置上，只有这个固定位置上的元素是唯一可见的。这个固定的位置是表的末端，被称作栈的<strong>顶(top)</strong>。对栈的基本操作是<code>push(进栈)</code>，<code>pop(出栈)</code>和<code>top(检查顶并返回它的值)</code>。值得一提的是，对空栈进行<code>pop/top</code>都是错误的，一个正确的栈ADT<span style="color: red;">不应该允许这种行为</span>。而push时因为内存空间用尽不够，则是实现错误，与ADT错误无关。</p>
-<ul>
-<li><p>栈的链表实现$O(1)$</p>
-<p>我们可以使用单链表来实现一个简单的栈模型。只需要将表的前端作为栈顶，我们便可以得到一个栈模型。通过链表完成的实现只花费常数时间，但是也带来了<code>malloc</code>和<code>free</code>的昂贵开销。</p>
-</li>
-<li><p>栈的数组实现$O(1)$</p>
-<p>使用一个数组实现栈很简单。它同样花费常数时间（原书写的是“非常快的常数时间”）。</p>
-</li>
-<li><p>不要忽略错误检测</p>
-<p>错误检测的确很影响栈的执行效率，甚至可能会使得时间开销加倍。所以我们一般在栈例程中省去了错误检测。虽然大多数时候程序得以正常运行，但我们应该随时准备好错误检测以防止不必要的损失。</p>
-</li>
-</ul>
-</li>
-<li><p>队列(Queue)</p>
-<p>在某种意义上，我们可以把队列看作栈的变种。因为它不仅像栈那样拥有一个在表的末端的队尾(rear)，还拥有一个在表的开头的队头(front)，<code>Enqueue(入队)</code>是在队尾插入一个元素，而<code>Dequeue(出队)</code>则是删除或返回队头的元素。</p>
-<ul>
-<li><p>链表实现</p>
-<p>在栈的链表实现上稍作改动，加上队头，我们便可以完成一个简单的队列实现。</p>
-</li>
-<li><p>循环数组实现</p>
-<ul>
-<li>注意<ol>
-<li>记得检测队列是否为空。</li>
-<li>保证你所有的例程的实现方法统一。</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>队列的应用</p>
-<ol>
-<li>各种各样的排队</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<blockquote id="fn_1">
-<sup>1</sup>. Last In First Out，即后进先出。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
-</blockquote>
 ]]></content>
       <categories>
         <category>读书笔记</category>
@@ -696,72 +762,6 @@ AD\equiv BD(\mod N)</script><p>即N整除A-B，也就是说无论A还是B除以N
 <p>可扩散列的目的是处理数据量过大以至装不进主存的情况。可扩散列通过使用位的根与树叶来将数据分开，我们用$D$代表根使用的位数，或称目录(directory)。也就是说，根中有$2^D$种情况。</p>
 </li>
 </ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>读书笔记</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>《数据结构和算法分析 C语言描述》笔记#6  堆</title>
-    <url>/reports/8a884bafbfc4/</url>
-    <content><![CDATA[<blockquote>
-<h4 id="堆-Heap"><a href="#堆-Heap" class="headerlink" title="堆(Heap)"></a>堆(Heap)</h4></blockquote>
-<ul>
-<li><p>二叉堆(binary heap)</p>
-<p>一般我们不加修饰地使用堆这个词时，一般指的都是二叉堆。堆具有两个性质：结构性和堆序性。</p>
-<ul>
-<li><p>结构性</p>
-<p>堆是一棵完全二叉树。因为它是一棵完全二叉树，具有一定规律，所以我们可以简单的使用简单数组实现它。</p>
-</li>
-<li><p>堆序性</p>
-<p>对于每个节点来说，它的父节点的关键字都应该比这个节点小（根节点除外，它没有父节点）。</p>
-</li>
-</ul>
-<p>在介绍完了堆的两个性质后，我们便可以着手对其进行操作，值得一提的所有操作都必须满足这两个性质！</p>
-<ul>
-<li><p><code>Insert</code>插入</p>
-<p>在插入时我们有一个常见的策略，叫做<code>上滤(percolate up)</code>。这个策略指的是我们的插入操作将从树叶开始不断往上寻找一个可能的位置。这个位置将在完成插入的同时，保证了二叉堆的两个性质。当我们要插入的关键字是新的最小值时，这个过程会持续到上滤到根节点为止。</p>
-</li>
-<li><p><code>DeleteMin</code>删除最小元</p>
-<p> 当我们删除一个最小元时，根节点位置处会出现一个空穴。为了填补这个空穴，我们必须将子节点上移，这相当于把空穴不断下移，这个过程叫做<code>下滤(percolate down)</code>。</p>
-</li>
-<li><p><code>DecreaseKey</code>降低关键字的值</p>
-<p>降低指定位置关键字的值，如果破坏了堆的序，则需要通过上滤进行调整。</p>
-</li>
-<li><p><code>IncreaseKey</code>提升关键字的值</p>
-<p>提升指定位置关键字的值，如果破坏了堆的序，则需要通过下滤进行调整。</p>
-</li>
-<li><p><code>Delete</code>删除</p>
-<p>先通过<code>DecreaseKey</code>将指定节点上滤，再通过<code>DeleteMin</code>删除节点。</p>
-</li>
-<li><p><code>BuildHeap</code>构建堆</p>
-<p>通过N个关键字构建一个堆。</p>
-</li>
-</ul>
-</li>
-<li><p>d-堆</p>
-<p>d-堆恰似二叉堆，只不过每个节点至多可以有d个子节点。</p>
-</li>
-<li><p>左式堆(leftist heap)</p>
-<p>左式堆是二叉树，也具有和二叉树相同的结构性和堆序性，唯一的不同在于左式堆不是理想平衡的，或者说实际上趋于非常不平衡。</p>
-<ul>
-<li><p>零路径长(Null Path Length, NPL)</p>
-<p>零路径长为一个节点到一个没有两个子节点的节点的最短路径长。具有0或1个子节点的节点的NPL为0（因为它们自己到自己的距离为0），而NPL(Null)为-1。</p>
-</li>
-</ul>
-<p>而对于左式堆来说，堆中的每一个节点X,左子节点的NPL大于等于右子节点的NPL。左式堆的这个性质将驱使左路径加深，右路径会变为堆中的最短路径。这将有利于合并操作。</p>
-</li>
-<li><p>斜堆(skew heap)/自适应堆(self-adjusting heap)</p>
-<p>斜堆是左式堆的自调节形式。它没有NPL的概念。</p>
-</li>
-<li><p>二项队列(binomial queue)</p>
-<p>二项队列和前面提到的优先队列不同，它的结构与其说像树，不如说更像是伞形结构。一棵二项树$B<em>k$可以看作是$B_0$到$B</em>{k-1}$的根作为同一个节点的子节点的产物。这样一来，每个二项树的节点数为$2^k$，这个结构规律性十分明显。</p>
-<p>这样一来我们可以用这些二项树的集合表示任意大小的优先队列。</p>
 </li>
 </ul>
 ]]></content>
