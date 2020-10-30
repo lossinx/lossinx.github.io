@@ -32,6 +32,19 @@
       </tags>
   </entry>
   <entry>
+    <title>《数据结构和算法分析 C语言描述》笔记#10 算法设计技巧</title>
+    <url>/reports/342f59392f1a/</url>
+    <content><![CDATA[<blockquote>
+<h4 id="贪婪算法"><a href="#贪婪算法" class="headerlink" title="贪婪算法"></a>贪婪算法</h4></blockquote>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>《数据结构和算法分析 C语言描述》笔记#1 引论</title>
     <url>/reports/576f952bdc28/</url>
     <content><![CDATA[<ol>
@@ -119,19 +132,6 @@ AD\equiv BD(\mod N)</script><p>即N整除A-B，也就是说无论A还是B除以N
 </ul>
 </li>
 </ol>
-]]></content>
-      <categories>
-        <category>读书笔记</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>《数据结构和算法分析 C语言描述》笔记#10 算法设计技巧</title>
-    <url>/reports/342f59392f1a/</url>
-    <content><![CDATA[<blockquote>
-<h4 id="贪婪算法"><a href="#贪婪算法" class="headerlink" title="贪婪算法"></a>贪婪算法</h4></blockquote>
 ]]></content>
       <categories>
         <category>读书笔记</category>
@@ -1123,7 +1123,7 @@ AD\equiv BD(\mod N)</script><p>即N整除A-B，也就是说无论A还是B除以N
       </tags>
   </entry>
   <entry>
-    <title>《数据结构和算法分析 C语言描述》笔记#0 写在前面</title>
+    <title>Dot入门1</title>
     <url>/notes/6b6867c78250/</url>
     <content><![CDATA[<h4 id="1-关于安装"><a href="#1-关于安装" class="headerlink" title="1. 关于安装"></a>1. 关于安装</h4><p>你可以去Graphviz<a href="https://graphviz.org/">官方网站</a>找到各个系统的下载方式，并且在官网有对这个软件更详细的说明。安装非常简单，只需要一路确认即可。</p>
 <h4 id="2-关于编译"><a href="#2-关于编译" class="headerlink" title="2. 关于编译"></a>2. 关于编译</h4><p>你可以通过命令行快速得到渲染后的图像文件。命令如下：</p>
