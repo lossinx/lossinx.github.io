@@ -336,6 +336,138 @@ AD\equiv BD(\mod N)</script><p>即N整除A-B，也就是说无论A还是B除以N
       </tags>
   </entry>
   <entry>
+    <title>《数据结构和算法分析 C语言描述》笔记#3 表、栈和队列</title>
+    <url>/reports/bb8f1d957d5f/</url>
+    <content><![CDATA[<ul>
+<li><h3 id="什么是抽象数据类型-Abstract-Data-Type-ADT"><a href="#什么是抽象数据类型-Abstract-Data-Type-ADT" class="headerlink" title="什么是抽象数据类型(Abstract Data Type, ADT)"></a>什么是抽象数据类型(Abstract Data Type, ADT)</h3><p>出于模块化设计思想，人们将一些操作的集合的数学模型称为ADT。ADT的诞生使得编程更加清晰，程序员只需要通过ADT操作便能方便的操作数据，而这些操作对于程序的其余部分是完全透明的，也就是说其余部分并不需要关注这部分的具体实现。常见的ADT有<strong>表(List)</strong>、<strong>集合(Set)</strong>、<strong>图(Graph)</strong>等。如果读者了解过抽象类(Abstract Class)或接口(Interface)的概念，会很容易接受ADT是抽象事物的事实。</p>
+</li>
+<li><h3 id="表-List"><a href="#表-List" class="headerlink" title="表(List)"></a>表(List)</h3><p>表可以看作一种容器，这个容器里面容纳了若干元素(element)。一个表拥有多少个元素，它的大小就为多少。当一个表含有0个元素，也就是大小为0时，我们称它为<strong>空表(empty list)</strong>。如前面提到的，ADT是一些操作的集合，对于表来说，我们有下列常见操作（仅举例）：</p>
+<p>| 名称              | 作用               |<br>| ————————- | ————————— |<br>| <code>PrintList()</code>     | 打印表             |<br>| <code>Insert(Element)</code> | 插入元素           |<br>| <code>Delete(Element)</code> | 删除元素           |<br>| <code>Find(Element)</code>   | 返回指定元素的位置 |</p>
+<p>在这里我们也仅仅是给出了表的概念，但没有给出它的具体实现。事实上，我们对表的所有操作都能用数组来实现。但是由于数组本身性质，使用数组可能会造成大量的空间浪费。而且为了维护表中元素的位置关系，我们还会花费大量时间。所以我们一般不用简单数组来实现表。</p>
+<ul>
+<li><p>链表(linked list)</p>
+<ul>
+<li><p>单链表(singly linked list)</p>
+<p>当链表没有（单双等）前缀时，一般指的是单链表。链表，顾名思义，表（或者说表中的元素们）以链的形式呈现。即每个单元（元素）不仅含有自己的信息，还有指向下一个单元的指针（Next指针）。最后一个单元因为没有后续单元，指向<code>NULL</code>（ASCII C规定NULL为0）。</p>
+<ul>
+<li><p>程序实现细节</p>
+<ul>
+<li><p>添加表头</p>
+<p>为了避免删除操作在某些特殊情况下带来的问题，我们可以添加<strong>表头</strong>（<strong>header</strong>，也可称作<strong>哑节点dummy node</strong>）。表头是一个假想的单元，它不包含实际的元素，仅仅当作一个标志。它的使用可以帮助我们表达基本的指针操作，却不会使得特殊情况下代码变得混乱不堪。但是否使用表头取决于程序员自己。</p>
+</li>
+</ul>
+</li>
+<li><p>常见错误</p>
+<ol>
+<li>程序崩溃，系统报错<ul>
+<li>错误的使用指针<ol>
+<li>初始化变量失败</li>
+<li>没有对指针进行<code>NULL</code>检查</li>
+<li>出现野指针</li>
+</ol>
+</li>
+<li>错误的分配内存<ol>
+<li>当某些内存不再需要时，记得及时<code>free</code></li>
+<li>不要无谓的分配内存，当分配内存时注意是否有必要</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>双链表(doubly linked list)</p>
+<p>有些时候可能我们需要倒序的扫描链表，这种时候单链表就显得有些无能为力了。为了解决这个问题，我们可以在每个单元上再加上一个指向前一个单元的指针。这增加了时间和空间的开销，但简化了一些操作。</p>
+</li>
+<li><p>循环链表(circular linked list)</p>
+<p>还可以让最后一单元的下一个单元的指针指向第一个单元。这与链表是单链表还是双链表无关，仅仅使得链表形成一个闭环。</p>
+</li>
+<li><p>游标(cursor)实现链表</p>
+<p>一些语言不支持指针，我们可以用游标法来模仿指针。只要能实现下面两条特性即可：</p>
+<ol>
+<li>数据存储在一组结构体中。每一个结构体包含数据以及指向下一个结构体的指针。</li>
+<li>一个新的结构体可以通过调用<code>malloc</code>方法而从系统全局内存(global memory)中得到，并且可以通过<code>free</code>方法释放。</li>
+</ol>
+</li>
+<li><p>应用</p>
+<ol>
+<li><p>平衡符号</p>
+<p>我们可以用栈来检测是否所有括号等成对符号是否成对完整出现。</p>
+</li>
+<li><p>后缀表达式(postfix)/逆波兰(reverse Polish)表达式</p>
+</li>
+<li><p>函数调用</p>
+<p>比较常见的例子可以参考javascript的执行上下文机制。</p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>多重表</p>
+<ul>
+<li><p>数组实现</p>
+<p>我们可以用二维数组实现一个网状结构的表。这很容易理解，故不赘述。</p>
+</li>
+<li><p>链表实现</p>
+<p>只要在每个单元上都多加上几个指针，我们就可以实现这个网状结构。</p>
+</li>
+</ul>
+</li>
+<li><p>栈(Stack)</p>
+<blockquote>
+<p>“栈很可能是计算机科学中仅次于数组的最基本的数据结构。”</p>
+</blockquote>
+<p>栈是一种特殊的表（亦可称作LIFO<sup><a href="#fn_1" id="reffn_1">1</a></sup>表），它的插入和删除操作只能作用在一个固定位置上，只有这个固定位置上的元素是唯一可见的。这个固定的位置是表的末端，被称作栈的<strong>顶(top)</strong>。对栈的基本操作是<code>push(进栈)</code>，<code>pop(出栈)</code>和<code>top(检查顶并返回它的值)</code>。值得一提的是，对空栈进行<code>pop/top</code>都是错误的，一个正确的栈ADT<span style="color: red;">不应该允许这种行为</span>。而push时因为内存空间用尽不够，则是实现错误，与ADT错误无关。</p>
+<ul>
+<li><p>栈的链表实现$O(1)$</p>
+<p>我们可以使用单链表来实现一个简单的栈模型。只需要将表的前端作为栈顶，我们便可以得到一个栈模型。通过链表完成的实现只花费常数时间，但是也带来了<code>malloc</code>和<code>free</code>的昂贵开销。</p>
+</li>
+<li><p>栈的数组实现$O(1)$</p>
+<p>使用一个数组实现栈很简单。它同样花费常数时间（原书写的是“非常快的常数时间”）。</p>
+</li>
+<li><p>不要忽略错误检测</p>
+<p>错误检测的确很影响栈的执行效率，甚至可能会使得时间开销加倍。所以我们一般在栈例程中省去了错误检测。虽然大多数时候程序得以正常运行，但我们应该随时准备好错误检测以防止不必要的损失。</p>
+</li>
+</ul>
+</li>
+<li><p>队列(Queue)</p>
+<p>在某种意义上，我们可以把队列看作栈的变种。因为它不仅像栈那样拥有一个在表的末端的队尾(rear)，还拥有一个在表的开头的队头(front)，<code>Enqueue(入队)</code>是在队尾插入一个元素，而<code>Dequeue(出队)</code>则是删除或返回队头的元素。</p>
+<ul>
+<li><p>链表实现</p>
+<p>在栈的链表实现上稍作改动，加上队头，我们便可以完成一个简单的队列实现。</p>
+</li>
+<li><p>循环数组实现</p>
+<ul>
+<li>注意<ol>
+<li>记得检测队列是否为空。</li>
+<li>保证你所有的例程的实现方法统一。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>队列的应用</p>
+<ol>
+<li>各种各样的排队</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote id="fn_1">
+<sup>1</sup>. Last In First Out，即后进先出。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>《数据结构和算法分析 C语言描述》笔记#4 树</title>
     <url>/reports/81b0f4f897cf/</url>
     <content><![CDATA[<ul>
@@ -566,138 +698,6 @@ AD\equiv BD(\mod N)</script><p>即N整除A-B，也就是说无论A还是B除以N
 </ul>
 </li>
 </ul>
-]]></content>
-      <categories>
-        <category>读书笔记</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>《数据结构和算法分析 C语言描述》笔记#3 表、栈和队列</title>
-    <url>/reports/bb8f1d957d5f/</url>
-    <content><![CDATA[<ul>
-<li><h3 id="什么是抽象数据类型-Abstract-Data-Type-ADT"><a href="#什么是抽象数据类型-Abstract-Data-Type-ADT" class="headerlink" title="什么是抽象数据类型(Abstract Data Type, ADT)"></a>什么是抽象数据类型(Abstract Data Type, ADT)</h3><p>出于模块化设计思想，人们将一些操作的集合的数学模型称为ADT。ADT的诞生使得编程更加清晰，程序员只需要通过ADT操作便能方便的操作数据，而这些操作对于程序的其余部分是完全透明的，也就是说其余部分并不需要关注这部分的具体实现。常见的ADT有<strong>表(List)</strong>、<strong>集合(Set)</strong>、<strong>图(Graph)</strong>等。如果读者了解过抽象类(Abstract Class)或接口(Interface)的概念，会很容易接受ADT是抽象事物的事实。</p>
-</li>
-<li><h3 id="表-List"><a href="#表-List" class="headerlink" title="表(List)"></a>表(List)</h3><p>表可以看作一种容器，这个容器里面容纳了若干元素(element)。一个表拥有多少个元素，它的大小就为多少。当一个表含有0个元素，也就是大小为0时，我们称它为<strong>空表(empty list)</strong>。如前面提到的，ADT是一些操作的集合，对于表来说，我们有下列常见操作（仅举例）：</p>
-<p>| 名称              | 作用               |<br>| ————————- | ————————— |<br>| <code>PrintList()</code>     | 打印表             |<br>| <code>Insert(Element)</code> | 插入元素           |<br>| <code>Delete(Element)</code> | 删除元素           |<br>| <code>Find(Element)</code>   | 返回指定元素的位置 |</p>
-<p>在这里我们也仅仅是给出了表的概念，但没有给出它的具体实现。事实上，我们对表的所有操作都能用数组来实现。但是由于数组本身性质，使用数组可能会造成大量的空间浪费。而且为了维护表中元素的位置关系，我们还会花费大量时间。所以我们一般不用简单数组来实现表。</p>
-<ul>
-<li><p>链表(linked list)</p>
-<ul>
-<li><p>单链表(singly linked list)</p>
-<p>当链表没有（单双等）前缀时，一般指的是单链表。链表，顾名思义，表（或者说表中的元素们）以链的形式呈现。即每个单元（元素）不仅含有自己的信息，还有指向下一个单元的指针（Next指针）。最后一个单元因为没有后续单元，指向<code>NULL</code>（ASCII C规定NULL为0）。</p>
-<ul>
-<li><p>程序实现细节</p>
-<ul>
-<li><p>添加表头</p>
-<p>为了避免删除操作在某些特殊情况下带来的问题，我们可以添加<strong>表头</strong>（<strong>header</strong>，也可称作<strong>哑节点dummy node</strong>）。表头是一个假想的单元，它不包含实际的元素，仅仅当作一个标志。它的使用可以帮助我们表达基本的指针操作，却不会使得特殊情况下代码变得混乱不堪。但是否使用表头取决于程序员自己。</p>
-</li>
-</ul>
-</li>
-<li><p>常见错误</p>
-<ol>
-<li>程序崩溃，系统报错<ul>
-<li>错误的使用指针<ol>
-<li>初始化变量失败</li>
-<li>没有对指针进行<code>NULL</code>检查</li>
-<li>出现野指针</li>
-</ol>
-</li>
-<li>错误的分配内存<ol>
-<li>当某些内存不再需要时，记得及时<code>free</code></li>
-<li>不要无谓的分配内存，当分配内存时注意是否有必要</li>
-</ol>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>双链表(doubly linked list)</p>
-<p>有些时候可能我们需要倒序的扫描链表，这种时候单链表就显得有些无能为力了。为了解决这个问题，我们可以在每个单元上再加上一个指向前一个单元的指针。这增加了时间和空间的开销，但简化了一些操作。</p>
-</li>
-<li><p>循环链表(circular linked list)</p>
-<p>还可以让最后一单元的下一个单元的指针指向第一个单元。这与链表是单链表还是双链表无关，仅仅使得链表形成一个闭环。</p>
-</li>
-<li><p>游标(cursor)实现链表</p>
-<p>一些语言不支持指针，我们可以用游标法来模仿指针。只要能实现下面两条特性即可：</p>
-<ol>
-<li>数据存储在一组结构体中。每一个结构体包含数据以及指向下一个结构体的指针。</li>
-<li>一个新的结构体可以通过调用<code>malloc</code>方法而从系统全局内存(global memory)中得到，并且可以通过<code>free</code>方法释放。</li>
-</ol>
-</li>
-<li><p>应用</p>
-<ol>
-<li><p>平衡符号</p>
-<p>我们可以用栈来检测是否所有括号等成对符号是否成对完整出现。</p>
-</li>
-<li><p>后缀表达式(postfix)/逆波兰(reverse Polish)表达式</p>
-</li>
-<li><p>函数调用</p>
-<p>比较常见的例子可以参考javascript的执行上下文机制。</p>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>多重表</p>
-<ul>
-<li><p>数组实现</p>
-<p>我们可以用二维数组实现一个网状结构的表。这很容易理解，故不赘述。</p>
-</li>
-<li><p>链表实现</p>
-<p>只要在每个单元上都多加上几个指针，我们就可以实现这个网状结构。</p>
-</li>
-</ul>
-</li>
-<li><p>栈(Stack)</p>
-<blockquote>
-<p>“栈很可能是计算机科学中仅次于数组的最基本的数据结构。”</p>
-</blockquote>
-<p>栈是一种特殊的表（亦可称作LIFO<sup><a href="#fn_1" id="reffn_1">1</a></sup>表），它的插入和删除操作只能作用在一个固定位置上，只有这个固定位置上的元素是唯一可见的。这个固定的位置是表的末端，被称作栈的<strong>顶(top)</strong>。对栈的基本操作是<code>push(进栈)</code>，<code>pop(出栈)</code>和<code>top(检查顶并返回它的值)</code>。值得一提的是，对空栈进行<code>pop/top</code>都是错误的，一个正确的栈ADT<span style="color: red;">不应该允许这种行为</span>。而push时因为内存空间用尽不够，则是实现错误，与ADT错误无关。</p>
-<ul>
-<li><p>栈的链表实现$O(1)$</p>
-<p>我们可以使用单链表来实现一个简单的栈模型。只需要将表的前端作为栈顶，我们便可以得到一个栈模型。通过链表完成的实现只花费常数时间，但是也带来了<code>malloc</code>和<code>free</code>的昂贵开销。</p>
-</li>
-<li><p>栈的数组实现$O(1)$</p>
-<p>使用一个数组实现栈很简单。它同样花费常数时间（原书写的是“非常快的常数时间”）。</p>
-</li>
-<li><p>不要忽略错误检测</p>
-<p>错误检测的确很影响栈的执行效率，甚至可能会使得时间开销加倍。所以我们一般在栈例程中省去了错误检测。虽然大多数时候程序得以正常运行，但我们应该随时准备好错误检测以防止不必要的损失。</p>
-</li>
-</ul>
-</li>
-<li><p>队列(Queue)</p>
-<p>在某种意义上，我们可以把队列看作栈的变种。因为它不仅像栈那样拥有一个在表的末端的队尾(rear)，还拥有一个在表的开头的队头(front)，<code>Enqueue(入队)</code>是在队尾插入一个元素，而<code>Dequeue(出队)</code>则是删除或返回队头的元素。</p>
-<ul>
-<li><p>链表实现</p>
-<p>在栈的链表实现上稍作改动，加上队头，我们便可以完成一个简单的队列实现。</p>
-</li>
-<li><p>循环数组实现</p>
-<ul>
-<li>注意<ol>
-<li>记得检测队列是否为空。</li>
-<li>保证你所有的例程的实现方法统一。</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>队列的应用</p>
-<ol>
-<li>各种各样的排队</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<blockquote id="fn_1">
-<sup>1</sup>. Last In First Out，即后进先出。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
-</blockquote>
 ]]></content>
       <categories>
         <category>读书笔记</category>
@@ -1120,6 +1120,309 @@ AD\equiv BD(\mod N)</script><p>即N整除A-B，也就是说无论A还是B除以N
       </categories>
       <tags>
         <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《数据结构和算法分析 C语言描述》笔记#0 写在前面</title>
+    <url>/notes/6b6867c78250/</url>
+    <content><![CDATA[<h4 id="1-关于安装"><a href="#1-关于安装" class="headerlink" title="1. 关于安装"></a>1. 关于安装</h4><p>你可以去Graphviz<a href="https://graphviz.org/">官方网站</a>找到各个系统的下载方式，并且在官网有对这个软件更详细的说明。安装非常简单，只需要一路确认即可。</p>
+<h4 id="2-关于编译"><a href="#2-关于编译" class="headerlink" title="2. 关于编译"></a>2. 关于编译</h4><p>你可以通过命令行快速得到渲染后的图像文件。命令如下：</p>
+<p><code>cmd [ flags ] [ input files ]</code></p>
+<p><code>cmd</code>为你想要使用的渲染方式，Graphviz提供的渲染方式有下列几种：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">指令</th>
+<th style="text-align:left">介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>dot</code></td>
+<td style="text-align:left">渲染的图具有明确方向性。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>osage</code></td>
+<td style="text-align:left">渲染的图是集群的矩形。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>neato</code></td>
+<td style="text-align:left">渲染的图缺乏方向性。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>twopi</code></td>
+<td style="text-align:left">渲染的图采用放射性布局。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>circo</code></td>
+<td style="text-align:left">渲染的图采用环型布局。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>fdp</code></td>
+<td style="text-align:left">渲染的图缺乏方向性。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>sfdp</code></td>
+<td style="text-align:left">渲染大型的图，图片缺乏方向性。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>patchwork</code></td>
+<td style="text-align:left">渲染如Treemaps的集群图表。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>详细可以见<a href="https://graphviz.org/about/">官方说明</a>。</p>
+<p><code>[ flags ]</code>是想要加上的参数。</p>
+<p>常见的有：</p>
+<p><code>-T</code>: 设定输出的格式/后缀名。</p>
+<p><code>-o</code>: 设定输出的文件名。</p>
+<p><code>-O</code>: 根据输入的文件名输出文件，并且支持<code>-T</code>多格式输出。</p>
+<p><code>-s</code>: 指定一个特定的输出比例大小。</p>
+<p>更多参数可以在<a href="https://graphviz.org/doc/info/command.html">官方文档</a>查看。</p>
+<p>如果你不想要这样麻烦的操作，这里有两种可能更好的方法：</p>
+<ol>
+<li><p>使用vs code中<code>João Pinto</code>编写的<code>Graphviz (dot) language support for Visual Studio Code</code>插件。这个插件允许你在右侧实时渲染你的图表，十分便利。</p>
+</li>
+<li><p>使用<a href="https://www.gravizo.com/"><code>Gravizo</code></a>。这是一个在线渲染图表的网站，允许你通过在Markdown中通过图片插入功能得到在线的即时渲染。</p>
+<p>使用十分简单，只需正常图片插入操作即可：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">![blabla](https:<span class="comment">//g.gravizo.com/svg? 你的图表)</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">例子： ![blabla](https:<span class="comment">//g.gravizo.com/svg? digraph g &#123;</span></span><br><span class="line">       splines = <span class="string">&quot;polyline&quot;</span>;</span><br><span class="line">    k2:s-&gt;k1:n [arrowhead=normal;color=<span class="string">&quot;green&quot;</span>;len=<span class="number">2</span>;style=<span class="string">&quot;polyline&quot;</span>];</span><br><span class="line">       k2:s-&gt;Z:n [arrowhead=normal;color=<span class="string">&quot;green&quot;</span>;len=<span class="number">2</span>];</span><br><span class="line">       k1:s-&gt;X:n [arrowhead=normal;color=<span class="string">&quot;red&quot;</span>;];</span><br><span class="line">       k1:s-&gt;Y:n [arrowhead=normal;color=<span class="string">&quot;green&quot;</span>;];</span><br><span class="line">       k1,k2 [shape=circle;];</span><br><span class="line">       Z,Y [shape=triangle;height=<span class="number">1</span>;]</span><br><span class="line">       X [shape=triangle;height=<span class="number">2</span>;]</span><br><span class="line">   &#125;)</span><br></pre></td></tr></table></figure>
+<p>![blabla](<a href="https://g.gravizo.com/svg?">https://g.gravizo.com/svg?</a> digraph g {</p>
+<pre><code>splines = &quot;polyline&quot;;
+k2:s-&gt;k1:n [arrowhead=normal;color=&quot;green&quot;;len=2;style=&quot;polyline&quot;];
+k2:s-&gt;Z:n [arrowhead=normal;color=&quot;green&quot;;len=2];
+k1:s-&gt;X:n [arrowhead=normal;color=&quot;red&quot;;];
+k1:s-&gt;Y:n [arrowhead=normal;color=&quot;green&quot;;];
+k1,k2 [shape=circle;];
+Z,Y [shape=triangle;height=1;]
+X [shape=triangle;height=2;]
+</code></pre><p>})</p>
+<p>你也可以直接得到图片，只需将你的图表描述进行url编码：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">![blabla](https:<span class="comment">//g.gravizo.com/source/svg?&lt;source_url_url_encoded&gt;)</span></span><br></pre></td></tr></table></figure>
+<p>顺便一提，<a href="https://www.gravizo.com/"><code>Gravizo</code></a>不仅支持<a href="https://en.wikipedia.org/wiki/DOT_(graph_description_language">DOT</a>),还支持<a href="http://plantuml.sourceforge.net/sequence.html">PlantUML</a> 和 <a href="http://www.umlgraph.org/doc/cd-model.html">UMLGraph</a>的语法！</p>
+<p>但遗憾的是，简书并不支持<a href="https://www.gravizo.com/"><code>Gravizo</code></a>。</p>
+</li>
+</ol>
+<h4 id="3-入门操作"><a href="#3-入门操作" class="headerlink" title="3. 入门操作"></a>3. 入门操作</h4><ol>
+<li><p>节点(node)、线(edge)、图(graph)</p>
+<blockquote>
+<p>节点</p>
+</blockquote>
+<p>节点是一个独立的单位，它包含了数据并拥有自己的属性。你可以设置节点的形状、大小和颜色等属性。</p>
+<p>你可以给每个节点都设置一个独特的属性：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">diagraph example3&#123;</span><br><span class="line">	<span class="string">&quot;iamanode&quot;</span> [color=<span class="string">&quot;red&quot;</span>,shape=circle];</span><br><span class="line">    <span class="string">&quot;iamsame&quot;</span> [label=<span class="string">&quot;Nodeiam&quot;</span>;fontsize=<span class="number">28</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>属性之间允许使用<code>,</code>或<code>;</code>分隔。另外，最好给节点名加上引号，以防止一些不必要的麻烦。</p>
+<p>但你也可给所有的节点一个默认的属性，这个默认属性会被节点自身单独设定的属性覆盖：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">diagraph example3_1&#123;</span><br><span class="line">	node [color=<span class="string">&quot;blue&quot;</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>线</p>
+</blockquote>
+<p>线连接了两个节点。通过属性你可以控制线的外观（大小，粗细等样式），指向等等设置。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">diagraph example3_2&#123;</span><br><span class="line">	a-&gt;b [color=<span class="string">&quot;red&quot;</span>,style=<span class="string">&quot;dotted&quot;</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>你同样可以给它一个基础的样式：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">diagraph example3_3&#123;</span><br><span class="line">	edge [style=<span class="string">&quot;dotted&quot;</span>,arrowhead=<span class="string">&quot;normal&quot;</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>图</p>
+</blockquote>
+<p>图分为有向图(diagraph)和无向图(graph)。</p>
+<ul>
+<li><p>有向图</p>
+<p>有向图以<code>diagraph</code>开始，脚本中的线条用<code>-&gt;</code>表示。在有向图里面，所有的边都默认是存在箭头即有向的（但我们还是可以通过调整边的属性去掉箭头）。前面的例子都是有向图，不再赘述。</p>
+</li>
+<li><p>无向图</p>
+<p>无向图以<code>graph</code>开始，脚本中的线条用<code>--</code>表示。在有向图里面，所有的边都默认无向。性质基本和有向图相同。</p>
+</li>
+</ul>
+<p>你在一个文件里只能建立一个的图，或者说一个文件是一个画板，在一个画板上只能容纳一副图表。</p>
+<p>但是你可以通过建立子图的方式，来某种意义上变相地容纳多个图，这有点类似于Java中内部类的概念。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">diagraph example3_4&#123;</span><br><span class="line">	subgraph cluster1&#123;</span><br><span class="line">		k1-&gt;k2 [color=grey];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>注意，子图必须以<code>cluster</code>开头命名，否则只是单纯的一个大括号。一个正常的子图是拥有自己的边框的，当边框不存在，很可能你的语法出现了错误。顺便一提，在一张图中，节点名是唯一的。</p>
+</li>
+</ol>
+<h4 id="4-高级操作"><a href="#4-高级操作" class="headerlink" title="4. 高级操作"></a>4. 高级操作</h4><p>在看完前面的例子后，我们应该就能画出一些简单的表格。但是可能有一些人对程序生成的表格并不满意，比如连接节点的线不是直线而是弯曲的曲线，节点的形状不是自己所求，或者追求更细致的图表。</p>
+<ul>
+<li><blockquote>
+<p>节点的<code>shape</code>属性</p>
+</blockquote>
+<p>我们可以通过<code>shape</code>属性将节点设置成不同形状！这里可不只有圆形矩形和三角形。</p>
+<p>Graphviz提供了许多基于多边形的预设形状，如star，folder，note等等。除此之外你还可以自定义一个多边形，这里简单分享一个自定义多边形的实例：</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">digraph example4_1 &#123;</span><br><span class="line">    splines = <span class="string">&quot;polyline&quot;</span>;</span><br><span class="line">    border = line;</span><br><span class="line">    subgraph x&#123;</span><br><span class="line">        polygon </span><br><span class="line">        [</span><br><span class="line">        <span class="attribute">shape</span>=<span class="string">&quot;polygon&quot;</span>;</span><br><span class="line">        <span class="attribute">sides</span>=9;</span><br><span class="line">        <span class="attribute">skew</span>=0.0;</span><br><span class="line">        <span class="attribute">distortion</span>=0.0;</span><br><span class="line">        <span class="attribute">regular</span>=<span class="literal">false</span>;</span><br><span class="line">        <span class="attribute">peripheries</span>=3;</span><br><span class="line">        <span class="attribute">orientation</span>=180;</span><br><span class="line">        <span class="attribute">style</span>=rounded</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>sides</code>边数</p>
+</blockquote>
+<p>这个属性仅可用于<code>shape=polygon</code>的情况，其默认值为<code>4</code>，呈现为一个矩形。</p>
+<blockquote>
+<p><code>skew</code>倾斜/偏移</p>
+</blockquote>
+<p>这个属性仅可用于<code>shape=polygon</code>的情况，其默认值为<code>0.0</code>。当其为正数时，节点上半部分向右偏移；当为负数时，节点的上半部分向左偏移。</p>
+<blockquote>
+<p><code>distortion</code>扭曲</p>
+</blockquote>
+<p>这个属性仅可用于<code>shape=polygon</code>的情况，其默认值为<code>0.0</code>。当其为正数时，节点上半部分左右扩张；当为负数时，节点的上半部分左右缩小。变形后的上半部分长度计算方式为<code>1 + distortion</code>。</p>
+<blockquote>
+<p><code>regular</code>规则度</p>
+</blockquote>
+<p>这个属性仅可用于<code>shape=polygon</code>的情况，其默认值为<code>false</code>。当其为<code>true</code>时，节点形状呈现为正多边形；当为<code>false</code>时，节点呈现为非正多边形。</p>
+<blockquote>
+<p><code>peripheries</code>边界条数</p>
+</blockquote>
+<p>这个属性对于基于多边形的形状都适用，其默认值为<code>1</code>。值得一提是，对于用户自己创建加载的形状，这个属性可能会导致渲染出现错误，这时候应将其设置为<code>0</code>以取消默认的边界。</p>
+<blockquote>
+<p><code>orientation</code>旋转</p>
+</blockquote>
+<p>这个属性仅可用于<code>shape=polygon</code>的情况，其默认值为<code>0.0</code>。当其为正数时，节点向左旋转；当为负数时，节点向右旋转。旋转的角度为该属性的值。</p>
+<blockquote>
+<p><code>styl=rounded</code>圆角</p>
+</blockquote>
+<p>这个属性适用于所有节点，但是对于本身有圆角的图形可能不会有显现。另外，一个属性只能有一个值。</p>
+</li>
+<li><blockquote>
+<p><code>shape=record</code>基于record的形状与锚点</p>
+</blockquote>
+<p>这个形状允许你将一个矩形通过内在的线分为好几部分。语法十分简单：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">digraph example4_2 &#123;</span><br><span class="line">	node01 [shape=record;label=<span class="string">&quot;左 | 中 | 右&quot;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们甚至可以更细分：</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">digraph example4_2_1 &#123;</span><br><span class="line">	node02 [shape=<span class="keyword">record</span>;label=<span class="string">&quot;左 |&#123; 中上 |&#123;a | b | c&#125;| 中下 &#125;| 右&quot;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>提示：每内嵌一次<code>&#123;&#125;</code>，分割的方向便会横竖旋转一次。</p>
+<p>如果我们想要其他节点不只是指向这个节点，而指向这些被分割出的部分，我们可以使用锚点：</p>
+<figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line">digraph example<span class="number">4</span>_<span class="number">2</span>_<span class="number">2</span> &#123;</span><br><span class="line">	<span class="symbol">node01</span> [shape=record;label=<span class="string">&quot;&lt;ybyb&gt;左 | &lt;yb8bo&gt;右&quot;</span>]</span><br><span class="line">    <span class="symbol">node01</span>:ybyb -&gt; <span class="symbol">node01</span>:yb<span class="number">8</span>bo;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>值得一提，锚点的声明一定要写在实际内容前面！</p>
+</li>
+<li><blockquote>
+<p>节点的<code>overflow</code>现象</p>
+</blockquote>
+<p>默认来说，节点中的文字不会溢出边界。事实上，节点形状大小会被文字内容给撑大，在这种情况下的<code>width</code>和<code>height</code>属性不会生效。为了让特定的高度和宽度生效，我们必须设置节点的<code>fixedsize</code>属性。</p>
+<p><code>fixedsize</code>属性有三个值，分别是<code>true</code>、<code>false</code>、<code>shape</code>。</p>
+<ul>
+<li><p><code>fixedsize=false</code></p>
+<p>这种情况下，倘若没有给出高度与宽度或者小于包围其文字内容的最小大小，节点形状的大小将按照包围其文字内容的最小大小计算。当给出的高度与宽度大于最小高宽，将按照给出的高宽变形。</p>
+</li>
+<li><p><code>fixedsize=true</code></p>
+<p>节点形状只与给定的高度与宽度有关，倘若过小，节点的文字内容会超出边界，甚至覆盖到其他节点上去，值得警惕。</p>
+</li>
+<li><p><code>fixedsize=shape</code></p>
+<p>和<code>fixedsize=true</code>情况类似，但是不会覆盖到其他节点，反而会将其他节点推开。不过在高宽过大时，边可能穿过节点边界指向文字内容。</p>
+</li>
+</ul>
+</li>
+<li><blockquote>
+<p>图的布局</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p><code>rankdir</code>改变图的排列方向</p>
+</blockquote>
+<p>我们可以通过改变图的属性 <code>rankdir</code>来改变图的排列方向。图默认为<code>rankdir=TB</code>，即从top到bottom；为了让它能左右排列，我们可以改为<code>rankdir=LR</code>。</p>
+</li>
+<li><blockquote>
+<p><code>rank</code>改变节点的位置</p>
+</blockquote>
+<p>当我们画完一张图的时候，可能会发现图中一些本应该排成一排或一列的节点没有在自己正确的位置。这种时候我们可以通过域和<code>rank</code>属性来修正。在<code>rank</code>中，左上为最小，右下为最大。</p>
+<ul>
+<li><p><code>sink</code>和<code>max</code></p>
+<p>当<code>rank</code>被设置为<code>sink</code>和<code>max</code>时，节点都会沉到最底部。但是<code>max</code>比<code>sink</code>对相邻节点的影响更大。</p>
+</li>
+<li><p><code>source</code>和<code>min</code></p>
+<p>当<code>rank</code>被设置为<code>source</code>和<code>min</code>时，节点都会上升至顶部。<code>source</code>只允许<code>rank</code>为<code>source</code>或<code>min</code>的位置处于最小阶，而<code>min</code>则不会排斥其他节点，但实际上两者带来的效果几乎没有差别。</p>
+</li>
+<li><p><code>same</code></p>
+<p>让所有的节点都处于同一阶。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">digraph example4_3 &#123;</span><br><span class="line">	X-&gt;Y-&gt;Z;</span><br><span class="line">    &#123;</span><br><span class="line">        X,Z;</span><br><span class="line">        rank=same</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><blockquote>
+<p><code>fill</code>为节点填色</p>
+</blockquote>
+<p>  有时候我们想要得到彩色背景的节点，而不仅仅只是通过<code>color</code>改变节点边的颜色。</p>
+<p>  通过<code>style=filled</code>和<code>fillcolor=red</code>属性可以改变这一点。</p>
+  <figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">digraph </span>example4_4 &#123;</span><br><span class="line">    <span class="built_in">k1</span> [color=<span class="keyword">blue;style=filled;fillcolor=black;fontcolor=white]</span></span><br><span class="line"><span class="keyword">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><blockquote>
+<p><code>portPos</code>改变边的指向</p>
+</blockquote>
+<p>  我们可以让边从一个节点的北部出发，指向一个节点的南部。</p>
+  <figure class="highlight c"><table><tr><td class="code"><pre><span class="line">digraph example4_5 &#123;</span><br><span class="line">    k2:s-&gt;k1:n [arrowhead=none;color=<span class="string">&quot;green&quot;</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//这里我通过 arrowhead 取消了边的箭头，更多边的属性请查阅官方文档</span></span><br></pre></td></tr></table></figure>
+<p>  这里的方向有：<code>&quot;n&quot;,&quot;ne&quot;,&quot;e&quot;,&quot;se&quot;,&quot;s&quot;,&quot;sw&quot;,&quot;w&quot;,&quot;nw&quot;,&quot;c&quot;,&quot;_&quot;</code>。<code>e,s,w,n</code>东南西北，<code>ne,se,sw,nw</code>同理。这里需要解释的是<code>c</code>和<code>_</code>。</p>
+<p>  <code>c</code>指的是从节点的中心指出或者指入。</p>
+<p>  <code>_</code>则是让程序自己寻找一个可能的值，在空间允许的情况下和<code>c</code>同效果。</p>
+</li>
+<li><blockquote>
+<p>边的<code>style</code>属性</p>
+</blockquote>
+<p><code>solid</code>默认的实线，<code>dashed</code>虚线，<code>dotted</code>点线，<code>bold</code>粗线，<code>tapered</code>锥形线，<code>invis</code>不可见。</p>
+</li>
+<li><blockquote>
+<p>在<code>lable</code>中使用HTML标签</p>
+</blockquote>
+<p><code>lable</code>属性值现在支持HTML标签，你可以用HTML标签对文字的样式进行修改（包括大小，颜色，字体，对齐甚至渐变）。<a href="https://graphviz.org/doc/info/shapes.html">详情请见官方文档</a>。</p>
+</li>
+<li><blockquote>
+<p><code>splines</code>改变线的形状</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p><code>true/spline</code></p>
+</blockquote>
+<p>这是默认属性。这将使得边为样条线，即可曲可直，可能为了指向终点穿过节点。</p>
+</li>
+<li><blockquote>
+<p><code>false/line</code></p>
+</blockquote>
+<p>当被设置为<code>false</code>或<code>line</code>时，边只为直线段，也可能为了指向终点穿过节点，“直来直去”。</p>
+</li>
+<li><blockquote>
+<p><code>polyline</code></p>
+</blockquote>
+<p>折线，保证所有边都为直线，边会通过折来转向，但转向角度不一定时90度。</p>
+</li>
+<li><blockquote>
+<p><code>ortho</code></p>
+</blockquote>
+<p>折线，保证所有边都为直线，转向角度为90度，可能为了指向终点穿过节点。</p>
+</li>
+<li><blockquote>
+<p><code>curved</code></p>
+</blockquote>
+<p>曲线，保证所有边都为曲线，可能为了指向终点穿过节点。</p>
+</li>
+<li><p><code>none</code>/<code>“”</code></p>
+<p>不显示边。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-查阅资料"><a href="#5-查阅资料" class="headerlink" title="5. 查阅资料"></a>5. 查阅资料</h4><ol>
+<li>官网<ol>
+<li><a href="https://graphviz.org/doc/info/shapes.html"><code>shape</code>属性查询</a></li>
+<li><a href="https://graphviz.org/doc/info/attrs.html"><code>attr</code>各个属性详略解释</a></li>
+</ol>
+</li>
+<li>博客/QA平台</li>
+</ol>
+<h4 id="6-参考资料"><a href="#6-参考资料" class="headerlink" title="6. 参考资料"></a>6. 参考资料</h4><ol>
+<li><a href="https://graphviz.org/">graphviz官网</a></li>
+<li><a href="https://stackoverflow.com/questions/31182987/polylines-edges-when-using-ports-graphviz">stackflow-polylinesedges when using ports graphviz</a></li>
+<li><a href="https://blog.csdn.net/Edisonleeee/article/details/90214143">Graphviz 画图教程 by EdisonLeejt</a></li>
+<li><a href="http://hustlijian.github.io/tutorial/2015/05/29/graphviz-learn.html?utm_source=tuicool&amp;utm_medium=referral">绘图工具graphviz学习使用 by hustlijian</a></li>
+<li><a href="https://www.cnblogs.com/shuqin/p/11897207.html">Graphviz 画图的一些总结 by 小胖西瓜</a></li>
+<li><a href="https://itopic.org/graphviz.html">Graphviz绘图 - DOT语言 by 老彭</a></li>
+<li><a href="https://www.cnblogs.com/itzxy/p/7860165.html">使用DOT语言和Graphviz绘图(翻译) by Tony Ballantyne 和 zxyblog</a></li>
+</ol>
+<p>感谢他们的思考与无私分享。</p>
+]]></content>
+      <categories>
+        <category>经验笔记</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>dot</tag>
       </tags>
   </entry>
 </search>

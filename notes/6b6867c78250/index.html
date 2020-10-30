@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Inconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.lossinx.site","root":"/","scheme":"Mist","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeInDown","post_header":"fadeInDown","post_body":"flipInX","coll_header":"bounceInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta name="description" content="点击查看详情。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《数据结构和算法分析 C语言描述》笔记#0 写在前面">
+<meta property="og:url" content="http://www.lossinx.site/notes/6b6867c78250/index.html">
+<meta property="og:site_name" content="万柏路36号">
+<meta property="og:description" content="点击查看详情。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-29T15:51:28.000Z">
+<meta property="article:modified_time" content="2020-10-30T15:39:58.537Z">
+<meta property="article:author" content="lossinx">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="dot">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://www.lossinx.site/notes/6b6867c78250/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>《数据结构和算法分析 C语言描述》笔记#0 写在前面 | 万柏路36号</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">万柏路36号</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">深林人不知，明月来相照</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-bed fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user-circle fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">2</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-columns fa-fw"></i>归档<span class="badge">12</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%85%B3%E4%BA%8E%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">1. 关于安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%85%B3%E4%BA%8E%E7%BC%96%E8%AF%91"><span class="nav-number">2.</span> <span class="nav-text">2. 关于编译</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%85%A5%E9%97%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">3. 入门操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E9%AB%98%E7%BA%A7%E6%93%8D%E4%BD%9C"><span class="nav-number">4.</span> <span class="nav-text">4. 高级操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E6%9F%A5%E9%98%85%E8%B5%84%E6%96%99"><span class="nav-number">5.</span> <span class="nav-text">5. 查阅资料</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">6.</span> <span class="nav-text">6. 参考资料</span></a></li></ol></div>
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lossinx"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">lossinx</p>
+  <div class="site-description" itemprop="description">子虚乌有</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="mailto:kirt87@163.com" title="E-Mail → mailto:kirt87@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://www.yasukawa.xyz/" title="http:&#x2F;&#x2F;www.yasukawa.xyz&#x2F;" rel="noopener" target="_blank">yasukawa</a>
+        </li>
+    </ul>
+  </div>
+
+        </section>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/lossinx" class="github-corner" title="Github" aria-label="Github" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.lossinx.site/notes/6b6867c78250/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="lossinx">
+      <meta itemprop="description" content="子虚乌有">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="万柏路36号">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          《数据结构和算法分析 C语言描述》笔记#0 写在前面
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-10-29 23:51:28" itemprop="dateCreated datePublished" datetime="2020-10-29T23:51:28+08:00">2020-10-29</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-10-30 23:39:58" itemprop="dateModified" datetime="2020-10-30T23:39:58+08:00">2020-10-30</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/notes/" itemprop="url" rel="index"><span itemprop="name">经验笔记</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+            <div class="post-description">点击查看详情。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h4 id="1-关于安装"><a href="#1-关于安装" class="headerlink" title="1. 关于安装"></a>1. 关于安装</h4><p>你可以去Graphviz<a target="_blank" rel="noopener" href="https://graphviz.org/">官方网站</a>找到各个系统的下载方式，并且在官网有对这个软件更详细的说明。安装非常简单，只需要一路确认即可。</p>
+<h4 id="2-关于编译"><a href="#2-关于编译" class="headerlink" title="2. 关于编译"></a>2. 关于编译</h4><p>你可以通过命令行快速得到渲染后的图像文件。命令如下：</p>
+<p><code>cmd [ flags ] [ input files ]</code></p>
+<p><code>cmd</code>为你想要使用的渲染方式，Graphviz提供的渲染方式有下列几种：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">指令</th>
+<th style="text-align:left">介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>dot</code></td>
+<td style="text-align:left">渲染的图具有明确方向性。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>osage</code></td>
+<td style="text-align:left">渲染的图是集群的矩形。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>neato</code></td>
+<td style="text-align:left">渲染的图缺乏方向性。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>twopi</code></td>
+<td style="text-align:left">渲染的图采用放射性布局。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>circo</code></td>
+<td style="text-align:left">渲染的图采用环型布局。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>fdp</code></td>
+<td style="text-align:left">渲染的图缺乏方向性。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>sfdp</code></td>
+<td style="text-align:left">渲染大型的图，图片缺乏方向性。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>patchwork</code></td>
+<td style="text-align:left">渲染如Treemaps的集群图表。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>详细可以见<a target="_blank" rel="noopener" href="https://graphviz.org/about/">官方说明</a>。</p>
+<p><code>[ flags ]</code>是想要加上的参数。</p>
+<p>常见的有：</p>
+<p><code>-T</code>: 设定输出的格式/后缀名。</p>
+<p><code>-o</code>: 设定输出的文件名。</p>
+<p><code>-O</code>: 根据输入的文件名输出文件，并且支持<code>-T</code>多格式输出。</p>
+<p><code>-s</code>: 指定一个特定的输出比例大小。</p>
+<p>更多参数可以在<a target="_blank" rel="noopener" href="https://graphviz.org/doc/info/command.html">官方文档</a>查看。</p>
+<p>如果你不想要这样麻烦的操作，这里有两种可能更好的方法：</p>
+<ol>
+<li><p>使用vs code中<code>João Pinto</code>编写的<code>Graphviz (dot) language support for Visual Studio Code</code>插件。这个插件允许你在右侧实时渲染你的图表，十分便利。</p>
+</li>
+<li><p>使用<a target="_blank" rel="noopener" href="https://www.gravizo.com/"><code>Gravizo</code></a>。这是一个在线渲染图表的网站，允许你通过在Markdown中通过图片插入功能得到在线的即时渲染。</p>
+<p>使用十分简单，只需正常图片插入操作即可：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">![blabla](https:<span class="comment">//g.gravizo.com/svg? 你的图表)</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">例子： ![blabla](https:<span class="comment">//g.gravizo.com/svg? digraph g &#123;</span></span><br><span class="line">       splines = <span class="string">&quot;polyline&quot;</span>;</span><br><span class="line">    k2:s-&gt;k1:n [arrowhead=normal;color=<span class="string">&quot;green&quot;</span>;len=<span class="number">2</span>;style=<span class="string">&quot;polyline&quot;</span>];</span><br><span class="line">       k2:s-&gt;Z:n [arrowhead=normal;color=<span class="string">&quot;green&quot;</span>;len=<span class="number">2</span>];</span><br><span class="line">       k1:s-&gt;X:n [arrowhead=normal;color=<span class="string">&quot;red&quot;</span>;];</span><br><span class="line">       k1:s-&gt;Y:n [arrowhead=normal;color=<span class="string">&quot;green&quot;</span>;];</span><br><span class="line">       k1,k2 [shape=circle;];</span><br><span class="line">       Z,Y [shape=triangle;height=<span class="number">1</span>;]</span><br><span class="line">       X [shape=triangle;height=<span class="number">2</span>;]</span><br><span class="line">   &#125;)</span><br></pre></td></tr></table></figure>
+<p>![blabla](<a target="_blank" rel="noopener" href="https://g.gravizo.com/svg?">https://g.gravizo.com/svg?</a> digraph g {</p>
+<pre><code>splines = &quot;polyline&quot;;
+k2:s-&gt;k1:n [arrowhead=normal;color=&quot;green&quot;;len=2;style=&quot;polyline&quot;];
+k2:s-&gt;Z:n [arrowhead=normal;color=&quot;green&quot;;len=2];
+k1:s-&gt;X:n [arrowhead=normal;color=&quot;red&quot;;];
+k1:s-&gt;Y:n [arrowhead=normal;color=&quot;green&quot;;];
+k1,k2 [shape=circle;];
+Z,Y [shape=triangle;height=1;]
+X [shape=triangle;height=2;]
+</code></pre><p>})</p>
+<p>你也可以直接得到图片，只需将你的图表描述进行url编码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![blabla](https:<span class="comment">//g.gravizo.com/source/svg?&lt;source_url_url_encoded&gt;)</span></span><br></pre></td></tr></table></figure>
+<p>顺便一提，<a target="_blank" rel="noopener" href="https://www.gravizo.com/"><code>Gravizo</code></a>不仅支持<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/DOT_(graph_description_language">DOT</a>),还支持<a target="_blank" rel="noopener" href="http://plantuml.sourceforge.net/sequence.html">PlantUML</a> 和 <a target="_blank" rel="noopener" href="http://www.umlgraph.org/doc/cd-model.html">UMLGraph</a>的语法！</p>
+<p>但遗憾的是，简书并不支持<a target="_blank" rel="noopener" href="https://www.gravizo.com/"><code>Gravizo</code></a>。</p>
+</li>
+</ol>
+<h4 id="3-入门操作"><a href="#3-入门操作" class="headerlink" title="3. 入门操作"></a>3. 入门操作</h4><ol>
+<li><p>节点(node)、线(edge)、图(graph)</p>
+<blockquote>
+<p>节点</p>
+</blockquote>
+<p>节点是一个独立的单位，它包含了数据并拥有自己的属性。你可以设置节点的形状、大小和颜色等属性。</p>
+<p>你可以给每个节点都设置一个独特的属性：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">diagraph example3&#123;</span><br><span class="line">	<span class="string">&quot;iamanode&quot;</span> [color=<span class="string">&quot;red&quot;</span>,shape=circle];</span><br><span class="line">    <span class="string">&quot;iamsame&quot;</span> [label=<span class="string">&quot;Nodeiam&quot;</span>;fontsize=<span class="number">28</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>属性之间允许使用<code>,</code>或<code>;</code>分隔。另外，最好给节点名加上引号，以防止一些不必要的麻烦。</p>
+<p>但你也可给所有的节点一个默认的属性，这个默认属性会被节点自身单独设定的属性覆盖：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">diagraph example3_1&#123;</span><br><span class="line">	node [color=<span class="string">&quot;blue&quot;</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>线</p>
+</blockquote>
+<p>线连接了两个节点。通过属性你可以控制线的外观（大小，粗细等样式），指向等等设置。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">diagraph example3_2&#123;</span><br><span class="line">	a-&gt;b [color=<span class="string">&quot;red&quot;</span>,style=<span class="string">&quot;dotted&quot;</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>你同样可以给它一个基础的样式：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">diagraph example3_3&#123;</span><br><span class="line">	edge [style=<span class="string">&quot;dotted&quot;</span>,arrowhead=<span class="string">&quot;normal&quot;</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>图</p>
+</blockquote>
+<p>图分为有向图(diagraph)和无向图(graph)。</p>
+<ul>
+<li><p>有向图</p>
+<p>有向图以<code>diagraph</code>开始，脚本中的线条用<code>-&gt;</code>表示。在有向图里面，所有的边都默认是存在箭头即有向的（但我们还是可以通过调整边的属性去掉箭头）。前面的例子都是有向图，不再赘述。</p>
+</li>
+<li><p>无向图</p>
+<p>无向图以<code>graph</code>开始，脚本中的线条用<code>--</code>表示。在有向图里面，所有的边都默认无向。性质基本和有向图相同。</p>
+</li>
+</ul>
+<p>你在一个文件里只能建立一个的图，或者说一个文件是一个画板，在一个画板上只能容纳一副图表。</p>
+<p>但是你可以通过建立子图的方式，来某种意义上变相地容纳多个图，这有点类似于Java中内部类的概念。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">diagraph example3_4&#123;</span><br><span class="line">	subgraph cluster1&#123;</span><br><span class="line">		k1-&gt;k2 [color=grey];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>注意，子图必须以<code>cluster</code>开头命名，否则只是单纯的一个大括号。一个正常的子图是拥有自己的边框的，当边框不存在，很可能你的语法出现了错误。顺便一提，在一张图中，节点名是唯一的。</p>
+</li>
+</ol>
+<h4 id="4-高级操作"><a href="#4-高级操作" class="headerlink" title="4. 高级操作"></a>4. 高级操作</h4><p>在看完前面的例子后，我们应该就能画出一些简单的表格。但是可能有一些人对程序生成的表格并不满意，比如连接节点的线不是直线而是弯曲的曲线，节点的形状不是自己所求，或者追求更细致的图表。</p>
+<ul>
+<li><blockquote>
+<p>节点的<code>shape</code>属性</p>
+</blockquote>
+<p>我们可以通过<code>shape</code>属性将节点设置成不同形状！这里可不只有圆形矩形和三角形。</p>
+<p>Graphviz提供了许多基于多边形的预设形状，如star，folder，note等等。除此之外你还可以自定义一个多边形，这里简单分享一个自定义多边形的实例：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">digraph example4_1 &#123;</span><br><span class="line">    splines = <span class="string">&quot;polyline&quot;</span>;</span><br><span class="line">    border = line;</span><br><span class="line">    subgraph x&#123;</span><br><span class="line">        polygon </span><br><span class="line">        [</span><br><span class="line">        <span class="attribute">shape</span>=<span class="string">&quot;polygon&quot;</span>;</span><br><span class="line">        <span class="attribute">sides</span>=9;</span><br><span class="line">        <span class="attribute">skew</span>=0.0;</span><br><span class="line">        <span class="attribute">distortion</span>=0.0;</span><br><span class="line">        <span class="attribute">regular</span>=<span class="literal">false</span>;</span><br><span class="line">        <span class="attribute">peripheries</span>=3;</span><br><span class="line">        <span class="attribute">orientation</span>=180;</span><br><span class="line">        <span class="attribute">style</span>=rounded</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>sides</code>边数</p>
+</blockquote>
+<p>这个属性仅可用于<code>shape=polygon</code>的情况，其默认值为<code>4</code>，呈现为一个矩形。</p>
+<blockquote>
+<p><code>skew</code>倾斜/偏移</p>
+</blockquote>
+<p>这个属性仅可用于<code>shape=polygon</code>的情况，其默认值为<code>0.0</code>。当其为正数时，节点上半部分向右偏移；当为负数时，节点的上半部分向左偏移。</p>
+<blockquote>
+<p><code>distortion</code>扭曲</p>
+</blockquote>
+<p>这个属性仅可用于<code>shape=polygon</code>的情况，其默认值为<code>0.0</code>。当其为正数时，节点上半部分左右扩张；当为负数时，节点的上半部分左右缩小。变形后的上半部分长度计算方式为<code>1 + distortion</code>。</p>
+<blockquote>
+<p><code>regular</code>规则度</p>
+</blockquote>
+<p>这个属性仅可用于<code>shape=polygon</code>的情况，其默认值为<code>false</code>。当其为<code>true</code>时，节点形状呈现为正多边形；当为<code>false</code>时，节点呈现为非正多边形。</p>
+<blockquote>
+<p><code>peripheries</code>边界条数</p>
+</blockquote>
+<p>这个属性对于基于多边形的形状都适用，其默认值为<code>1</code>。值得一提是，对于用户自己创建加载的形状，这个属性可能会导致渲染出现错误，这时候应将其设置为<code>0</code>以取消默认的边界。</p>
+<blockquote>
+<p><code>orientation</code>旋转</p>
+</blockquote>
+<p>这个属性仅可用于<code>shape=polygon</code>的情况，其默认值为<code>0.0</code>。当其为正数时，节点向左旋转；当为负数时，节点向右旋转。旋转的角度为该属性的值。</p>
+<blockquote>
+<p><code>styl=rounded</code>圆角</p>
+</blockquote>
+<p>这个属性适用于所有节点，但是对于本身有圆角的图形可能不会有显现。另外，一个属性只能有一个值。</p>
+</li>
+<li><blockquote>
+<p><code>shape=record</code>基于record的形状与锚点</p>
+</blockquote>
+<p>这个形状允许你将一个矩形通过内在的线分为好几部分。语法十分简单：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">digraph example4_2 &#123;</span><br><span class="line">	node01 [shape=record;label=<span class="string">&quot;左 | 中 | 右&quot;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们甚至可以更细分：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">digraph example4_2_1 &#123;</span><br><span class="line">	node02 [shape=<span class="keyword">record</span>;label=<span class="string">&quot;左 |&#123; 中上 |&#123;a | b | c&#125;| 中下 &#125;| 右&quot;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>提示：每内嵌一次<code>&#123;&#125;</code>，分割的方向便会横竖旋转一次。</p>
+<p>如果我们想要其他节点不只是指向这个节点，而指向这些被分割出的部分，我们可以使用锚点：</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">digraph example<span class="number">4</span>_<span class="number">2</span>_<span class="number">2</span> &#123;</span><br><span class="line">	<span class="symbol">node01</span> [shape=record;label=<span class="string">&quot;&lt;ybyb&gt;左 | &lt;yb8bo&gt;右&quot;</span>]</span><br><span class="line">    <span class="symbol">node01</span>:ybyb -&gt; <span class="symbol">node01</span>:yb<span class="number">8</span>bo;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>值得一提，锚点的声明一定要写在实际内容前面！</p>
+</li>
+<li><blockquote>
+<p>节点的<code>overflow</code>现象</p>
+</blockquote>
+<p>默认来说，节点中的文字不会溢出边界。事实上，节点形状大小会被文字内容给撑大，在这种情况下的<code>width</code>和<code>height</code>属性不会生效。为了让特定的高度和宽度生效，我们必须设置节点的<code>fixedsize</code>属性。</p>
+<p><code>fixedsize</code>属性有三个值，分别是<code>true</code>、<code>false</code>、<code>shape</code>。</p>
+<ul>
+<li><p><code>fixedsize=false</code></p>
+<p>这种情况下，倘若没有给出高度与宽度或者小于包围其文字内容的最小大小，节点形状的大小将按照包围其文字内容的最小大小计算。当给出的高度与宽度大于最小高宽，将按照给出的高宽变形。</p>
+</li>
+<li><p><code>fixedsize=true</code></p>
+<p>节点形状只与给定的高度与宽度有关，倘若过小，节点的文字内容会超出边界，甚至覆盖到其他节点上去，值得警惕。</p>
+</li>
+<li><p><code>fixedsize=shape</code></p>
+<p>和<code>fixedsize=true</code>情况类似，但是不会覆盖到其他节点，反而会将其他节点推开。不过在高宽过大时，边可能穿过节点边界指向文字内容。</p>
+</li>
+</ul>
+</li>
+<li><blockquote>
+<p>图的布局</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p><code>rankdir</code>改变图的排列方向</p>
+</blockquote>
+<p>我们可以通过改变图的属性 <code>rankdir</code>来改变图的排列方向。图默认为<code>rankdir=TB</code>，即从top到bottom；为了让它能左右排列，我们可以改为<code>rankdir=LR</code>。</p>
+</li>
+<li><blockquote>
+<p><code>rank</code>改变节点的位置</p>
+</blockquote>
+<p>当我们画完一张图的时候，可能会发现图中一些本应该排成一排或一列的节点没有在自己正确的位置。这种时候我们可以通过域和<code>rank</code>属性来修正。在<code>rank</code>中，左上为最小，右下为最大。</p>
+<ul>
+<li><p><code>sink</code>和<code>max</code></p>
+<p>当<code>rank</code>被设置为<code>sink</code>和<code>max</code>时，节点都会沉到最底部。但是<code>max</code>比<code>sink</code>对相邻节点的影响更大。</p>
+</li>
+<li><p><code>source</code>和<code>min</code></p>
+<p>当<code>rank</code>被设置为<code>source</code>和<code>min</code>时，节点都会上升至顶部。<code>source</code>只允许<code>rank</code>为<code>source</code>或<code>min</code>的位置处于最小阶，而<code>min</code>则不会排斥其他节点，但实际上两者带来的效果几乎没有差别。</p>
+</li>
+<li><p><code>same</code></p>
+<p>让所有的节点都处于同一阶。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">digraph example4_3 &#123;</span><br><span class="line">	X-&gt;Y-&gt;Z;</span><br><span class="line">    &#123;</span><br><span class="line">        X,Z;</span><br><span class="line">        rank=same</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><blockquote>
+<p><code>fill</code>为节点填色</p>
+</blockquote>
+<p>  有时候我们想要得到彩色背景的节点，而不仅仅只是通过<code>color</code>改变节点边的颜色。</p>
+<p>  通过<code>style=filled</code>和<code>fillcolor=red</code>属性可以改变这一点。</p>
+  <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">digraph </span>example4_4 &#123;</span><br><span class="line">    <span class="built_in">k1</span> [color=<span class="keyword">blue;style=filled;fillcolor=black;fontcolor=white]</span></span><br><span class="line"><span class="keyword">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><blockquote>
+<p><code>portPos</code>改变边的指向</p>
+</blockquote>
+<p>  我们可以让边从一个节点的北部出发，指向一个节点的南部。</p>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">digraph example4_5 &#123;</span><br><span class="line">    k2:s-&gt;k1:n [arrowhead=none;color=<span class="string">&quot;green&quot;</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//这里我通过 arrowhead 取消了边的箭头，更多边的属性请查阅官方文档</span></span><br></pre></td></tr></table></figure>
+<p>  这里的方向有：<code>&quot;n&quot;,&quot;ne&quot;,&quot;e&quot;,&quot;se&quot;,&quot;s&quot;,&quot;sw&quot;,&quot;w&quot;,&quot;nw&quot;,&quot;c&quot;,&quot;_&quot;</code>。<code>e,s,w,n</code>东南西北，<code>ne,se,sw,nw</code>同理。这里需要解释的是<code>c</code>和<code>_</code>。</p>
+<p>  <code>c</code>指的是从节点的中心指出或者指入。</p>
+<p>  <code>_</code>则是让程序自己寻找一个可能的值，在空间允许的情况下和<code>c</code>同效果。</p>
+</li>
+<li><blockquote>
+<p>边的<code>style</code>属性</p>
+</blockquote>
+<p><code>solid</code>默认的实线，<code>dashed</code>虚线，<code>dotted</code>点线，<code>bold</code>粗线，<code>tapered</code>锥形线，<code>invis</code>不可见。</p>
+</li>
+<li><blockquote>
+<p>在<code>lable</code>中使用HTML标签</p>
+</blockquote>
+<p><code>lable</code>属性值现在支持HTML标签，你可以用HTML标签对文字的样式进行修改（包括大小，颜色，字体，对齐甚至渐变）。<a target="_blank" rel="noopener" href="https://graphviz.org/doc/info/shapes.html">详情请见官方文档</a>。</p>
+</li>
+<li><blockquote>
+<p><code>splines</code>改变线的形状</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p><code>true/spline</code></p>
+</blockquote>
+<p>这是默认属性。这将使得边为样条线，即可曲可直，可能为了指向终点穿过节点。</p>
+</li>
+<li><blockquote>
+<p><code>false/line</code></p>
+</blockquote>
+<p>当被设置为<code>false</code>或<code>line</code>时，边只为直线段，也可能为了指向终点穿过节点，“直来直去”。</p>
+</li>
+<li><blockquote>
+<p><code>polyline</code></p>
+</blockquote>
+<p>折线，保证所有边都为直线，边会通过折来转向，但转向角度不一定时90度。</p>
+</li>
+<li><blockquote>
+<p><code>ortho</code></p>
+</blockquote>
+<p>折线，保证所有边都为直线，转向角度为90度，可能为了指向终点穿过节点。</p>
+</li>
+<li><blockquote>
+<p><code>curved</code></p>
+</blockquote>
+<p>曲线，保证所有边都为曲线，可能为了指向终点穿过节点。</p>
+</li>
+<li><p><code>none</code>/<code>“”</code></p>
+<p>不显示边。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-查阅资料"><a href="#5-查阅资料" class="headerlink" title="5. 查阅资料"></a>5. 查阅资料</h4><ol>
+<li>官网<ol>
+<li><a target="_blank" rel="noopener" href="https://graphviz.org/doc/info/shapes.html"><code>shape</code>属性查询</a></li>
+<li><a target="_blank" rel="noopener" href="https://graphviz.org/doc/info/attrs.html"><code>attr</code>各个属性详略解释</a></li>
+</ol>
+</li>
+<li>博客/QA平台</li>
+</ol>
+<h4 id="6-参考资料"><a href="#6-参考资料" class="headerlink" title="6. 参考资料"></a>6. 参考资料</h4><ol>
+<li><a target="_blank" rel="noopener" href="https://graphviz.org/">graphviz官网</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/31182987/polylines-edges-when-using-ports-graphviz">stackflow-polylinesedges when using ports graphviz</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/Edisonleeee/article/details/90214143">Graphviz 画图教程 by EdisonLeejt</a></li>
+<li><a target="_blank" rel="noopener" href="http://hustlijian.github.io/tutorial/2015/05/29/graphviz-learn.html?utm_source=tuicool&amp;utm_medium=referral">绘图工具graphviz学习使用 by hustlijian</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/shuqin/p/11897207.html">Graphviz 画图的一些总结 by 小胖西瓜</a></li>
+<li><a target="_blank" rel="noopener" href="https://itopic.org/graphviz.html">Graphviz绘图 - DOT语言 by 老彭</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/itzxy/p/7860165.html">使用DOT语言和Graphviz绘图(翻译) by Tony Ballantyne 和 zxyblog</a></li>
+</ol>
+<p>感谢他们的思考与无私分享。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>lossinx
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://www.lossinx.site/notes/6b6867c78250/" title="《数据结构和算法分析 C语言描述》笔记#0 写在前面">http://www.lossinx.site/notes/6b6867c78250/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/note/" rel="tag"># 笔记</a>
+              <a href="/tags/dot/" rel="tag"># dot</a>
+          </div>
+
+        
+
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 2020 | 橙之心 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lossinx</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script size="250" alpha="0.3" zIndex="-1" src="//cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+  
+
+  
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
