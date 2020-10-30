@@ -707,6 +707,72 @@ AD\equiv BD(\mod N)</script><p>即N整除A-B，也就是说无论A还是B除以N
       </tags>
   </entry>
   <entry>
+    <title>《数据结构和算法分析 C语言描述》笔记#6  堆</title>
+    <url>/reports/8a884bafbfc4/</url>
+    <content><![CDATA[<blockquote>
+<h4 id="堆-Heap"><a href="#堆-Heap" class="headerlink" title="堆(Heap)"></a>堆(Heap)</h4></blockquote>
+<ul>
+<li><p>二叉堆(binary heap)</p>
+<p>一般我们不加修饰地使用堆这个词时，一般指的都是二叉堆。堆具有两个性质：结构性和堆序性。</p>
+<ul>
+<li><p>结构性</p>
+<p>堆是一棵完全二叉树。因为它是一棵完全二叉树，具有一定规律，所以我们可以简单的使用简单数组实现它。</p>
+</li>
+<li><p>堆序性</p>
+<p>对于每个节点来说，它的父节点的关键字都应该比这个节点小（根节点除外，它没有父节点）。</p>
+</li>
+</ul>
+<p>在介绍完了堆的两个性质后，我们便可以着手对其进行操作，值得一提的所有操作都必须满足这两个性质！</p>
+<ul>
+<li><p><code>Insert</code>插入</p>
+<p>在插入时我们有一个常见的策略，叫做<code>上滤(percolate up)</code>。这个策略指的是我们的插入操作将从树叶开始不断往上寻找一个可能的位置。这个位置将在完成插入的同时，保证了二叉堆的两个性质。当我们要插入的关键字是新的最小值时，这个过程会持续到上滤到根节点为止。</p>
+</li>
+<li><p><code>DeleteMin</code>删除最小元</p>
+<p> 当我们删除一个最小元时，根节点位置处会出现一个空穴。为了填补这个空穴，我们必须将子节点上移，这相当于把空穴不断下移，这个过程叫做<code>下滤(percolate down)</code>。</p>
+</li>
+<li><p><code>DecreaseKey</code>降低关键字的值</p>
+<p>降低指定位置关键字的值，如果破坏了堆的序，则需要通过上滤进行调整。</p>
+</li>
+<li><p><code>IncreaseKey</code>提升关键字的值</p>
+<p>提升指定位置关键字的值，如果破坏了堆的序，则需要通过下滤进行调整。</p>
+</li>
+<li><p><code>Delete</code>删除</p>
+<p>先通过<code>DecreaseKey</code>将指定节点上滤，再通过<code>DeleteMin</code>删除节点。</p>
+</li>
+<li><p><code>BuildHeap</code>构建堆</p>
+<p>通过N个关键字构建一个堆。</p>
+</li>
+</ul>
+</li>
+<li><p>d-堆</p>
+<p>d-堆恰似二叉堆，只不过每个节点至多可以有d个子节点。</p>
+</li>
+<li><p>左式堆(leftist heap)</p>
+<p>左式堆是二叉树，也具有和二叉树相同的结构性和堆序性，唯一的不同在于左式堆不是理想平衡的，或者说实际上趋于非常不平衡。</p>
+<ul>
+<li><p>零路径长(Null Path Length, NPL)</p>
+<p>零路径长为一个节点到一个没有两个子节点的节点的最短路径长。具有0或1个子节点的节点的NPL为0（因为它们自己到自己的距离为0），而NPL(Null)为-1。</p>
+</li>
+</ul>
+<p>而对于左式堆来说，堆中的每一个节点X,左子节点的NPL大于等于右子节点的NPL。左式堆的这个性质将驱使左路径加深，右路径会变为堆中的最短路径。这将有利于合并操作。</p>
+</li>
+<li><p>斜堆(skew heap)/自适应堆(self-adjusting heap)</p>
+<p>斜堆是左式堆的自调节形式。它没有NPL的概念。</p>
+</li>
+<li><p>二项队列(binomial queue)</p>
+<p>二项队列和前面提到的优先队列不同，它的结构与其说像树，不如说更像是伞形结构。一棵二项树$B<em>k$可以看作是$B_0$到$B</em>{k-1}$的根作为同一个节点的子节点的产物。这样一来，每个二项树的节点数为$2^k$，这个结构规律性十分明显。</p>
+<p>这样一来我们可以用这些二项树的集合表示任意大小的优先队列。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>《数据结构和算法分析 C语言描述》笔记#7 排序算法</title>
     <url>/reports/eb9331feb36c/</url>
     <content><![CDATA[<blockquote>
@@ -817,72 +883,6 @@ AD\equiv BD(\mod N)</script><p>即N整除A-B，也就是说无论A还是B除以N
 <blockquote id="fn_1">
 <sup>1</sup>. 序偶： ordered pair，用<code>()</code>包裹的一对数字，如<code>(3,6)</code>，出自离散数学。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
 </blockquote>
-]]></content>
-      <categories>
-        <category>读书笔记</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>《数据结构和算法分析 C语言描述》笔记#6  堆</title>
-    <url>/reports/8a884bafbfc4/</url>
-    <content><![CDATA[<blockquote>
-<h4 id="堆-Heap"><a href="#堆-Heap" class="headerlink" title="堆(Heap)"></a>堆(Heap)</h4></blockquote>
-<ul>
-<li><p>二叉堆(binary heap)</p>
-<p>一般我们不加修饰地使用堆这个词时，一般指的都是二叉堆。堆具有两个性质：结构性和堆序性。</p>
-<ul>
-<li><p>结构性</p>
-<p>堆是一棵完全二叉树。因为它是一棵完全二叉树，具有一定规律，所以我们可以简单的使用简单数组实现它。</p>
-</li>
-<li><p>堆序性</p>
-<p>对于每个节点来说，它的父节点的关键字都应该比这个节点小（根节点除外，它没有父节点）。</p>
-</li>
-</ul>
-<p>在介绍完了堆的两个性质后，我们便可以着手对其进行操作，值得一提的所有操作都必须满足这两个性质！</p>
-<ul>
-<li><p><code>Insert</code>插入</p>
-<p>在插入时我们有一个常见的策略，叫做<code>上滤(percolate up)</code>。这个策略指的是我们的插入操作将从树叶开始不断往上寻找一个可能的位置。这个位置将在完成插入的同时，保证了二叉堆的两个性质。当我们要插入的关键字是新的最小值时，这个过程会持续到上滤到根节点为止。</p>
-</li>
-<li><p><code>DeleteMin</code>删除最小元</p>
-<p> 当我们删除一个最小元时，根节点位置处会出现一个空穴。为了填补这个空穴，我们必须将子节点上移，这相当于把空穴不断下移，这个过程叫做<code>下滤(percolate down)</code>。</p>
-</li>
-<li><p><code>DecreaseKey</code>降低关键字的值</p>
-<p>降低指定位置关键字的值，如果破坏了堆的序，则需要通过上滤进行调整。</p>
-</li>
-<li><p><code>IncreaseKey</code>提升关键字的值</p>
-<p>提升指定位置关键字的值，如果破坏了堆的序，则需要通过下滤进行调整。</p>
-</li>
-<li><p><code>Delete</code>删除</p>
-<p>先通过<code>DecreaseKey</code>将指定节点上滤，再通过<code>DeleteMin</code>删除节点。</p>
-</li>
-<li><p><code>BuildHeap</code>构建堆</p>
-<p>通过N个关键字构建一个堆。</p>
-</li>
-</ul>
-</li>
-<li><p>d-堆</p>
-<p>d-堆恰似二叉堆，只不过每个节点至多可以有d个子节点。</p>
-</li>
-<li><p>左式堆(leftist heap)</p>
-<p>左式堆是二叉树，也具有和二叉树相同的结构性和堆序性，唯一的不同在于左式堆不是理想平衡的，或者说实际上趋于非常不平衡。</p>
-<ul>
-<li><p>零路径长(Null Path Length, NPL)</p>
-<p>零路径长为一个节点到一个没有两个子节点的节点的最短路径长。具有0或1个子节点的节点的NPL为0（因为它们自己到自己的距离为0），而NPL(Null)为-1。</p>
-</li>
-</ul>
-<p>而对于左式堆来说，堆中的每一个节点X,左子节点的NPL大于等于右子节点的NPL。左式堆的这个性质将驱使左路径加深，右路径会变为堆中的最短路径。这将有利于合并操作。</p>
-</li>
-<li><p>斜堆(skew heap)/自适应堆(self-adjusting heap)</p>
-<p>斜堆是左式堆的自调节形式。它没有NPL的概念。</p>
-</li>
-<li><p>二项队列(binomial queue)</p>
-<p>二项队列和前面提到的优先队列不同，它的结构与其说像树，不如说更像是伞形结构。一棵二项树$B<em>k$可以看作是$B_0$到$B</em>{k-1}$的根作为同一个节点的子节点的产物。这样一来，每个二项树的节点数为$2^k$，这个结构规律性十分明显。</p>
-<p>这样一来我们可以用这些二项树的集合表示任意大小的优先队列。</p>
-</li>
-</ul>
 ]]></content>
       <categories>
         <category>读书笔记</category>
