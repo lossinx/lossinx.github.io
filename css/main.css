@@ -1734,7 +1734,7 @@ pre code {
   width: 100%;
 }
 .with-love {
-  color: #FF8C00;
+  color: #B22222;
   display: inline-block;
   margin: 0 5px;
   animation: icon-animate 1.33s ease-in-out infinite;
@@ -2960,7 +2960,7 @@ hr {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #55607d;
+  background: #ff6a0e;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
