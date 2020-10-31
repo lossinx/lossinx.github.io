@@ -496,5 +496,17 @@
 
   
 
+<script>
+NexT.utils.loadComments('#valine-comments', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', () => {
+    new Valine(Object.assign({"enable":true,"appId":"uwW31lrlI8otDb142RHrGMYU-gzGzoHsz","appKey":"5bq1DjWFEEXgyl9xse4lqGWz","serverURLs":"https://uww31lrl.lc-cn-n1-shared.com","placeholder":"有需要可留言，有时间就会回复。","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":true,"comment_count":true,"recordIP":false,"enableQQ":true,"requiredFields":["nick","mail"]}, {
+      el: '#valine-comments',
+      path: "/tags/dot/",
+      serverURLs: "https://uww31lrl.lc-cn-n1-shared.com"
+    }));
+  }, window.Valine);
+});
+</script>
+
 </body>
 </html>
