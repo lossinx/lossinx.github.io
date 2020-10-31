@@ -1,37 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>《数据结构和算法分析 C语言描述》笔记#0 写在前面</title>
-    <url>/reports/f165f6af4c15/</url>
-    <content><![CDATA[<ul>
-<li>这是什么</li>
-</ul>
-<p>  这是笔者在阅读《数据结构和算法分析 C语言描述》过程中和过程后写下的笔记，并不一定完善，且可能存在错误之处，故仅作参考之用，望海涵。</p>
-<p>  顺带一提，笔者使用的版本为中文第二版。</p>
-<ul>
-<li>什么人该读这本书</li>
-</ul>
-<p>  对数据结构和算法有浓厚兴趣或者将它作为一些难度更高层次更深的相关专业书籍的导读的人。</p>
-<ul>
-<li>读这本书需要什么</li>
-</ul>
-<p>  C语言基础（更准确地说，书中算法均用ANSI C表示）、部分离散数学知识和中等程度的程序设计知识（包括但不限于指针和递归等内容）</p>
-<ul>
-<li>关于如何去读这本书的建议<ol>
-<li>整理知识结构和笔记</li>
-<li>尽可能地完成章末练习</li>
-</ol>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>读书笔记</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>《数据结构和算法分析 C语言描述》笔记#1 引论</title>
     <url>/reports/576f952bdc28/</url>
     <content><![CDATA[<ol>
@@ -119,6 +88,37 @@ AD\equiv BD(\mod N)</script><p>即N整除A-B，也就是说无论A还是B除以N
 </ul>
 </li>
 </ol>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《数据结构和算法分析 C语言描述》笔记#0 写在前面</title>
+    <url>/reports/f165f6af4c15/</url>
+    <content><![CDATA[<ul>
+<li>这是什么</li>
+</ul>
+<p>  这是笔者在阅读《数据结构和算法分析 C语言描述》过程中和过程后写下的笔记，并不一定完善，且可能存在错误之处，故仅作参考之用，望海涵。</p>
+<p>  顺带一提，笔者使用的版本为中文第二版。</p>
+<ul>
+<li>什么人该读这本书</li>
+</ul>
+<p>  对数据结构和算法有浓厚兴趣或者将它作为一些难度更高层次更深的相关专业书籍的导读的人。</p>
+<ul>
+<li>读这本书需要什么</li>
+</ul>
+<p>  C语言基础（更准确地说，书中算法均用ANSI C表示）、部分离散数学知识和中等程度的程序设计知识（包括但不限于指针和递归等内容）</p>
+<ul>
+<li>关于如何去读这本书的建议<ol>
+<li>整理知识结构和笔记</li>
+<li>尽可能地完成章末练习</li>
+</ol>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>读书笔记</category>
