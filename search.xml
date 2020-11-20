@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Dot入门1</title>
-    <url>/notes/6b6867c78250/</url>
+    <url>/posts/6b6867c78250/</url>
     <content><![CDATA[<h4 id="1-关于安装"><a href="#1-关于安装" class="headerlink" title="1. 关于安装"></a>1. 关于安装</h4><p>你可以去Graphviz<a href="https://graphviz.org/">官方网站</a>找到各个系统的下载方式，并且在官网有对这个软件更详细的说明。安装非常简单，只需要一路确认即可。</p>
 <h4 id="2-关于编译"><a href="#2-关于编译" class="headerlink" title="2. 关于编译"></a>2. 关于编译</h4><p>你可以通过命令行快速得到渲染后的图像文件。命令如下：</p>
 <p><code>cmd [ flags ] [ input files ]</code></p>
@@ -296,7 +296,7 @@ X [shape=triangle;height=2;]
 <p>感谢他们的思考与无私分享。</p>
 ]]></content>
       <categories>
-        <category>经验笔记</category>
+        <category>文章</category>
       </categories>
       <tags>
         <tag>笔记</tag>
